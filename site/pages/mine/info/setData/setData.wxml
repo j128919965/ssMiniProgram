@@ -1,0 +1,47 @@
+<!--pages/mine/info/setData/setData.wxml-->
+<cu-custom bgColor="bg-gradual-blue" isBack="{{true}}">
+	<view slot="backText">取消</view>
+	<view slot="content">修改{{opts[opt]}}</view>
+</cu-custom>
+<view wx:if="{{opt}}">
+  <view class="cu-form-group margin-top relative">
+    <block wx:if="{{opt==0}}">
+       <view class="title">昵称</view>
+      <input placeholder="请输入cn（昵称）" model:value="{{cn}}" bindinput="onChange"></input>
+    </block>
+    <block wx:if="{{opt==1}}">
+      <view class="title">部门</view>
+      <picker model:value="{{department}}" range="{{picker}}" bindchange="onChange">
+        <view class="picker">
+          {{department?picker[department]:'选择部门'}}
+        </view>
+      </picker>
+    </block>
+    <block wx:if="{{opt==2}}">
+      <view class="title">姓名</view>
+      <input placeholder="请输入姓名" model:value="{{name}}" bindinput="onChange"></input>
+    </block>
+    <block wx:if="{{opt==3}}">
+      <view class="title">性别</view>
+      <switch class="switch-sex" model:checked="{{gender}}" bindchange="onChange"></switch>
+    </block>
+    <block wx:if="{{opt==4}}">
+      <view class="title">生日</view>
+      <picker mode="date" model:value="{{birthday}}" start="1990-01-01" end="2004-09-01" bindchange="onChange">
+        <view class="picker">
+          {{birthday?birthday:'2002-01-01'}}
+        </view>
+      </picker>
+    </block>
+    <block wx:if="{{opt==5}}">
+      <view class="title">班级</view>
+      <input placeholder="请输入班级" model:value="{{className}}" bindinput="onChange"></input>
+    </block>
+    <block wx:if="{{opt==6}}">
+      <view class="title">学号</view>
+      <input placeholder="请输入学号" model:value="{{stuId}}" bindinput="onChange"></input>
+    </block>
+    <button wx:if="{{changed}}" class="m-info-save bg-green shadow" bindtap="save" style="width:100rpx">保存</button>
+  </view>
+</view>
+

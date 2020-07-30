@@ -1,0 +1,98 @@
+/* pages/mine/mine.wxss */
+@import "/app.wxss";
+
+.m-mine-topimg{
+  width: 100%;
+  height: 360rpx;
+}
+
+.m-mine-inner{
+  width: 710rpx;
+  margin:40rpx 20rpx 100rpx 20rpx;
+}
+
+.m-mine-inner-name{
+  height: 32rpx;
+  display: flex;
+  font-size: 24rpx;
+  align-items: center;
+  margin: 20rpx 0 32rpx 0;
+}
+
+.m-mine-inner-hello{
+  margin-right: 15rpx;
+}
+
+.m-mine-inner-infocard{
+  position: relative;
+  height: 400rpx;
+  border: 1px solid #eee;
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 40rpx;
+}
+
+.m-infocard-title{
+  color: black;
+  margin: 40rpx 0 0 40rpx;
+  font-size: 40rpx;
+  font-weight: 600;
+}
+
+.m-honorcard-title{
+  color: black;
+  font-size: 40rpx;
+  font-weight: 600;
+}
+
+.m-infocard-headimg{
+  width: 200rpx;
+  height: 200rpx;
+  position: absolute;
+  top: -88rpx;
+  right: 60rpx;
+}
+
+.m-infocard-methods{
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+  padding-top: 20px;
+  position: absolute;
+  bottom: 0;
+}
+
+.m-infocard-methods>navigator{
+  width: 160rpx;
+  height: 240rpx;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-size: 12px;
+}
+
+.m-infocard-methods>navigator>image{
+  width: 160rpx;
+  height: 160rpx;
+  margin-bottom: 20rpx;
+}
+
+.m-mine-inner-honorcard{
+  position: relative;
+  height: 240rpx;
+  border: 1px solid #eee;
+}
+
+.m-mine-inner-honorcard>navigator{
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 100rpx 0 60rpx;
+  height: 100%;
+}
+
+.m-mine-inner-honorcard>navigator>image{
+  width: 80px;
+  height: 80px;
+}

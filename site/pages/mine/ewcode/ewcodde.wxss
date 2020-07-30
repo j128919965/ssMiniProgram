@@ -1,0 +1,39 @@
+/* pages/mine/ewcode/ewcodde.wxss */
+@import "/pages/mine/mine.wxss";
+
+.m-ewm-head-outer{
+  width: 240rpx;
+  height: 240rpx;
+  border-radius: 120rpx;
+  position: absolute;
+  top: -120rpx;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #fff;
+}
+
+.m-ewm-head{
+  width: 200rpx;
+  height: 200rpx;
+  border-radius: 100rpx;
+}
+
+.m-ewm-head-container{
+  position: relative;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+.ewcode{
+  margin: 0 auto;
+  margin-top: 200rpx;
+
+  height: 400rpx;
+  width: 400rpx;
+  border: 1px solid black;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+}

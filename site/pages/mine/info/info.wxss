@@ -1,0 +1,43 @@
+/* pages/mine/info/info.wxss */
+@import "/app.wxss";
+@import "/pages/mine/mine.wxss";
+
+.m-info-nav{
+  flex: 1;
+  color: rgba(0,0,0,0.5);
+  padding-right: 40rpx;
+  overflow: hidden;
+  position: relative;
+  display: flex;
+  flex-direction: row-reverse;
+}
+
+.m-info-nav-notap{
+  flex: 1;
+  color: rgba(0,0,0,0.5);
+  padding-right: 40rpx;
+  overflow: hidden;
+  position: relative;
+  display: flex;
+  flex-direction: row-reverse;
+}
+
+.m-info-nav::after {
+  font-family: "cuIcon";
+  display: block;
+  content: "\e6a3";
+  position: absolute;
+  font-size: 34rpx;
+  color: var(--grey);
+  width: 60rpx;
+  text-align: center;
+  top: 0;
+  bottom: 0;
+  right: -20rpx;
+  margin: auto;
+  }
+  
+
+  .m-mine-nav-hover{
+    background: white;
+  }

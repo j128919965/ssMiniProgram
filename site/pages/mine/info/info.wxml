@@ -1,0 +1,49 @@
+<!--pages/mine/info/info.wxml-->
+<cu-custom bgColor="bg-gradual-blue" isBack="{{true}}">
+	<view slot="backText">返回</view>
+	<view slot="content">个人资料</view>
+</cu-custom>
+<block wx:if="{{uData}}">
+<navigator class="cu-form-group margin-top" url="/pages/mine/info/setData/setData?opt=0">
+	<view class="title">昵称</view>
+	<view class="m-info-nav">
+		{{uData.cn?uData.cn:'点击输入昵称'}}
+	</view>
+</navigator>
+<view class="cu-form-group">
+	<view class="title">所属部门</view>
+	<view class="m-info-nav-notap">
+		{{uData.department>=0?picker[uData.department]:'SunShine'}}
+	</view>
+</view>
+<navigator class="cu-form-group margin-top" url="/pages/mine/info/setData/setData?opt=2">
+	<view class="title">姓名</view>
+	<view class="m-info-nav">
+		{{uData.name?uData.name:"点击输入姓名"}}
+	</view>
+</navigator>
+<navigator class="cu-form-group" url="/pages/mine/info/setData/setData?opt=3">
+	<view class="title">性别</view>
+	<view class="m-info-nav">
+		{{uData.gender?'男':'女'}}
+	</view>
+</navigator>
+<navigator class="cu-form-group" url="/pages/mine/info/setData/setData?opt=4">
+	<view class="title">生日</view>
+	<view class="m-info-nav">
+		{{uData.birthday?uData.birthday:"点击选择生日"}}
+	</view>
+</navigator>
+<navigator class="cu-form-group" url="/pages/mine/info/setData/setData?opt=5">
+	<view class="title">所属班级</view>
+	<view class="m-info-nav">
+		{{uData.className?uData.className:'点击输入班级'}}
+	</view>
+</navigator>
+<navigator class="cu-form-group" url="/pages/mine/info/setData/setData?opt=6">
+	<view class="title">学号</view>
+	<view class="m-info-nav">
+		{{uData.stuId?uData.stuId:'点击输入学号'}}
+	</view>
+</navigator>
+</block>

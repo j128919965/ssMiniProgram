@@ -1,0 +1,18 @@
+/* pages/mine/info/setData/setData.wxss */
+@import "/pages/mine/info/info.wxss";
+
+.m-info-save{
+  position: absolute;
+  width: 86rpx;
+  height: 66rpx;
+  border-radius: 33rpx;
+  background: #66CCFF;
+  color: white;
+  font-size: 24rpx;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0;
+  right: 40rpx;
+  top: 140rpx;
+}

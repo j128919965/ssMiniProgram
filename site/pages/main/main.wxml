@@ -1,0 +1,7 @@
+<!--pages/main/main.wxml-->
+<view>
+<navigator class="sb" url="/pages/webview/index">
+<button >点击</button>
+</navigator>
+</view>
+

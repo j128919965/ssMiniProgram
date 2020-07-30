@@ -1,0 +1,47 @@
+<!--pages/mine/honor/honor.wxml-->
+<cu-custom bgColor="bg-gradual-blue" isBack="{{true}}">
+	<view slot="backText">返回</view>
+	<view slot="content">荣誉回廊</view>
+</cu-custom>
+
+
+
+<view class="m-honor-container {{visiable?'blur':''}}">
+<block wx:if="{{honors.length==0}}" >
+  <view class="m-honor-block">
+      <view class="m-honor-title">您还没有获得奖章哦</view>
+      <image class="m-honor-img"  src="/images/honor/cry.png"></image>
+    </view>
+</block>
+  <block wx:for="{{honors}}" wx:key="item">
+    <view class="m-honor-block" data-id="{{index}}" bindtap="showmodal">
+      <view class="m-honor-title">{{item.name}}</view>
+      <image class="m-honor-img"  src="{{item.src}}"></image>
+    </view>
+  </block>
+</view>
+
+<view class="cu-modal {{visiable?'show':''}}" bindtap="hideModal" >
+  <view class="m-honor-modal">
+    <view class="m-honor-modal-inner">
+      <image src="{{honors[modalId].src}}" class="m-honor-modal-img"></image>
+      <view class="m-honor-modal-content">
+        <view class="m-honor-modal-header">
+          <view class="m-honor-modal-title">
+            {{honors[modalId].name}}
+          </view>
+          <view class="m-honor-modal-date">
+            <view class="bluebg">获得于 </view>
+            <view class="blueft">{{honors[modalId].date}}</view>
+          </view>
+        </view>
+        <view class="m-honor-modal-des">
+          <text>{{honors[modalId].description}}</text> 
+        </view>
+        <view class="m-honor-modal-des">
+          <text>获取方式： {{honors[modalId].get_method}}</text> 
+        </view>
+      </view>
+    </view>
+  </view>
+</view>

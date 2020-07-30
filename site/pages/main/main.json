@@ -1,0 +1,14 @@
+{
+  "component": true,
+  "usingComponents": {
+    "cu-custom": "/colorui/components/cu-custom"
+  },
+  "window": {
+    "navigationBarBackgroundColor": "#ffffff",
+    "navigationBarTextStyle": "black",
+    "navigationBarTitleText": "小程序",
+    "backgroundColor": "#eeeeee",
+    "backgroundTextStyle": "light",
+    "enablePullDownRefresh": false
+  }
+}

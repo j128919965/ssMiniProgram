@@ -1,0 +1,9 @@
+<!--templates/card/card.wxml-->
+
+<template name="card">
+  <view class="card">
+    <view class="info">
+    {{message}}
+    </view>
+  </view>
+</template>

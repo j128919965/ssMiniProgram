@@ -1,0 +1,4 @@
+/* pages/main/main.wxss */
+.sb{
+  margin-top: 200px;
+}

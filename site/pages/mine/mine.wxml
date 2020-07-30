@@ -1,0 +1,36 @@
+<!--pages/mine/mine.wxml-->
+<scroll-view scroll-y class="scrollPage">
+<image src='/images/bak.jpg' mode='scaleToFill' class='m-mine-topimg' ></image>
+<view class="m-mine-inner">
+  <view class="m-mine-inner-name" >
+    <view class="m-mine-inner-hello">你好 </view> 
+    <view>{{uData.cn}}</view>
+  </view>
+  
+  <view class="m-mine-inner-infocard shadow shadow-lg bg-white radius-xl ">
+    <block wx:if="{{userInfo.nickName}}">
+      <view class="m-infocard-title">高级资深干员</view>
+      <view class="cu-avatar round margin-left m-infocard-headimg" style="background-image:url({{userInfo.avatarUrl}});"></view>
+      <view class="m-infocard-methods">
+        <navigator open-type="navigate" url="/pages/mine/ewcode/ewcodde" hover-class="m-mine-nav-hover">
+          <image src="{{userInfo.avatarUrl}}"></image>
+          我的二维码
+        </navigator>
+        <navigator open-type="navigate" url="/pages/mine/info/info" hover-class="m-mine-nav-hover">
+        <image src="{{userInfo.avatarUrl}}"></image>
+          个人资料
+        </navigator>
+      </view>
+    </block>
+    <block wx:else>
+      <button open-type="getUserInfo" bindgetuserinfo="getUserInfo">登录</button>
+    </block>
+  </view>
+  <view  wx:if="{{userInfo.nickName}}" class="m-mine-inner-honorcard shadow shadow-lg bg-white radius-xl ">
+    <navigator url="/pages/mine/honor/honor">
+      <view class="m-honorcard-title">荣誉回廊</view>
+      <image src="{{userInfo.avatarUrl}}"></image>
+    </navigator>
+  </view>
+</view>
+</scroll-view>

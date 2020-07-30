@@ -1,0 +1,94 @@
+/* pages/mine/honor/honor.wxss */
+@import '/app.wxss';
+.m-honor-container{
+  margin-top: 10px;
+  display: flex;
+  width: 100%;
+  padding: 0 76rpx;
+  justify-content: space-between;
+  min-height: 100%;
+}
+
+.m-honor-block{
+  width: 264rpx;
+  height: 304rpx;
+  display: flex;
+  flex-direction: column-reverse;
+  box-shadow: 0px 0px 5px #666 ;
+}
+
+.m-honor-img{
+  width: 264rpx;
+  height: 264rpx;
+}
+
+.m-honor-title{ 
+  font-size: 24rpx;
+  height: 40rpx;
+  background-color: white;
+  line-height: 40rpx;
+  text-align: center;
+}
+
+.m-honor-modal{
+  position: relative;
+	display: inline-block;
+  width: 100%;
+  background-color: white;
+  color: black;
+}
+
+.blur{
+  filter: blur(2px);
+}
+
+.m-honor-modal-inner{
+  display: flex;
+}
+
+.m-honor-modal-img{
+  width: 240rpx;
+  height: 240rpx;
+}
+
+.m-honor-modal-content{
+  width: 510rpx;
+  padding: 10rpx 20rpx;
+}
+
+.m-honor-modal-header{
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+
+.m-honor-modal-title{
+  font-size: 32rpx;
+}
+
+.m-honor-modal-date{
+  font-size: 20rpx;
+  height: 28rpx;
+  line-height: 28rpx;
+  display: flex;
+  font-weight: 100;
+}
+
+.bluebg{
+  background-color: #66CCFF;
+  color: white;
+  margin-right: 20rpx;
+}
+.blueft{
+  background-color: white;
+  color: #66CCFF;
+  font-weight: 600;
+}
+
+.m-honor-modal-des{
+  width: 100%;
+  font-size: 20rpx;
+  margin-top: 30rpx;
+  text-align: left;
+  letter-spacing: 1px;
+}

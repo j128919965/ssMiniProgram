@@ -1,0 +1,15 @@
+<!--pages/mine/ewcode/ewcodde.wxml-->
+<cu-custom bgColor="bg-gradual-blue" isBack="{{true}}">
+	<view slot="backText">返回</view>
+	<view slot="content">我的二维码</view>
+</cu-custom>
+<image src='/images/bak.jpg' mode='scaleToFill' class='m-mine-topimg' ></image>
+<view class="m-ewm-head-container">
+<view class="m-ewm-head-outer">
+<image class="m-ewm-head" src="{{headURL}}"></image>
+</view>
+</view>
+
+<view class="ewcode">
+暂未开放
+</view>
