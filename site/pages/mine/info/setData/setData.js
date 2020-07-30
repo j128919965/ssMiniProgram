@@ -64,7 +64,7 @@ Page({
         return;
     }
     //此处需要post新的数据
-    post('http://localhost/updateUser',{opt:cs,data:this.data[cs],uid:this.data.uid});
+    post('http://ss.lizhaorong.xyz/updateUser',{opt:cs,data:this.data[cs],uid:this.data.uid});
     
 
     let pages = getCurrentPages(); //当前页面

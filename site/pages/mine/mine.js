@@ -1,5 +1,6 @@
 // pages/mine/mine.js
 const app = getApp();
+const util = require('../../utils/util')
 Component({
   /**
    * 组件的属性列表
@@ -39,11 +40,18 @@ Component({
    */
   methods: {
     getUserInfo(e){
-      // this.setData({userInfo:e.detail.userInfo});
-      console.log(this.data.userInfo);
-      console.log(app.globalData.userInfo);
-      
-     
+      this.setData({userInfo:e.detail.userInfo});
+      wx.login({
+        success: async res => {
+          let data = await util.get('http://ss.lizhaorong.xyz/login', {
+            code: res.code
+          });
+          data = data.data[0]
+          data.gender = data.gender == 1;
+          this.setData({uData:data})
+          app.setUData(data)
+        }
+      })
     }
   }
 })

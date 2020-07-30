@@ -11,7 +11,7 @@ Page({
     honors:[]
   },
   onLoad:async function(){
-    let data = await get("http://localhost/getHonors",{uid:app.globalData.uData.uid});
+    let data = await get("http://ss.lizhaorong.xyz/getHonors",{uid:app.globalData.uData.uid});
     data = data.data;
     console.log(data);
     data.forEach((x)=>{

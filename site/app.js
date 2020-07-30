@@ -2,6 +2,10 @@
 const util = require('./utils/util')
 App({
 
+  setUData:function(data){
+    this.globalData.uData = data;
+  },
+
   onLaunch: function () {
 
     wx.getSystemInfo({
