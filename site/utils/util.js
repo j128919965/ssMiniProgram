@@ -31,7 +31,7 @@ const get = async (url, data) => {
         resolve(x.data)
       },
       fail: (x) => {
-        alert("请求失败")
+        console.log("请求失败")
         resolve(x.data)
       }
     })

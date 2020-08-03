@@ -1,6 +1,30 @@
 /* pages/mine/mine.wxss */
 @import "/app.wxss";
 
+.m-login-text{
+  height: 48rpx;
+  line-height: 48rpx;
+  font-size: 36rpx;
+  width: 100%;
+  text-align: center;
+  margin-top: 62px;
+  margin-bottom: 20px;
+  color: black;
+  font-weight: 600;
+}
+
+.m-login-btn{
+  background-color: #66CCFF;
+  color: white;
+  font-size: 32rpx;
+  font-weight: thin;
+  padding: 0;
+  max-width: 160rpx;
+  height: 60rpx;
+  line-height: 60rpx;
+  border-radius: 10rpx;
+}
+
 .m-mine-topimg{
   width: 100%;
   height: 360rpx;

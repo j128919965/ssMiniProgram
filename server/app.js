@@ -1,3 +1,11 @@
+/*
+ * @Description: 
+ * @version: 
+ * @Author: queue
+ * @Date: 2020-07-30 01:50:58
+ * @LastEditors: queue
+ * @LastEditTime: 2020-08-02 18:11:18
+ */ 
 const express = require('express');
 const app = express();
 const http = require("http");
@@ -7,6 +15,7 @@ const bodyParser = require('body-parser');
 const compression = require('compression')
 const cors = require('cors');
 const fs = require("fs");
+const message = require('./route/message');
 
 const myCall = require('./util').myCall;
 const query = require('./util/db').Query;
@@ -21,6 +30,8 @@ app.use(compression())
 app.use(cors())
 app.use(bodyParser.json({ limit: '10mb', extended: true }))
 app.use(bodyParser.urlencoded({ limit: '10mb', extended: true }))
+app.use('/message',message);
+
 
 
 app.get('/login', async (req, res) =>{
@@ -61,8 +72,11 @@ app.post('/updateUser',async (req,res) =>{
 app.get('/getHonors' ,async(req,res)=>{
     let sql = 'call proc_gethonor(?)';
     let data = await myCall(sql,req.query);
-    res.status(200).json({message:'获取成功',data})
+    res.status(200).json({message:'获取荣耀奖章成功',data})
 })
+
+
+
 
 http.createServer(app).listen(80);
 https.createServer(httpsOption, app).listen(443);

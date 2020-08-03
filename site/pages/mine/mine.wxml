@@ -4,12 +4,12 @@
 <view class="m-mine-inner">
   <view class="m-mine-inner-name" >
     <view class="m-mine-inner-hello">你好 </view> 
-    <view>{{uData.cn}}</view>
+    <view>{{!!uData.cn?uData.cn:"旅行者"}}</view>
   </view>
   
-  <view class="m-mine-inner-infocard shadow shadow-lg bg-white radius-xl ">
+  <view class="m-mine-inner-infocard shadow shadow-lg bg-white radius-xl">
     <block wx:if="{{userInfo.nickName}}">
-      <view class="m-infocard-title">高级资深干员</view>
+      <view class="m-infocard-title">{{uData.level}}</view>
       <view class="cu-avatar round margin-left m-infocard-headimg" style="background-image:url({{userInfo.avatarUrl}});"></view>
       <view class="m-infocard-methods">
         <navigator open-type="navigate" url="/pages/mine/ewcode/ewcodde" hover-class="m-mine-nav-hover">
@@ -23,7 +23,8 @@
       </view>
     </block>
     <block wx:else>
-      <button open-type="getUserInfo" bindgetuserinfo="getUserInfo">登录</button>
+      <view class="m-login-text">加入我们，了解更多精彩</view>
+      <button open-type="getUserInfo" bindgetuserinfo="getUserInfo" class="m-login-btn">注册</button>
     </block>
   </view>
   <view  wx:if="{{userInfo.nickName}}" class="m-mine-inner-honorcard shadow shadow-lg bg-white radius-xl ">

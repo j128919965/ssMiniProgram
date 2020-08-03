@@ -1,0 +1,71 @@
+/* pages/message/message.wxss */
+
+.m-message-none{
+  display: flex;
+  width: 100%;
+  font-size: 30rpx;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.m-message-none-img{
+  width: 80rpx;
+  height: 80rpx;
+  margin:40rpx;
+}
+
+.m-msg-container{
+  display: flex;
+  margin: 0 0 100rpx 40rpx;
+  flex-direction: column;
+}
+
+.m-msg-card{
+  position: relative;
+  padding-right: 20rpx;
+  margin-top: 40rpx;
+  height: 242rpx;
+  border-bottom: 1px solid #DADADA;
+}
+
+.m-msg-title{
+  font-size: 32rpx;
+  font-weight: 600;
+  margin-bottom: 40rpx;
+  position: relative;
+}
+
+.m-msg-title>.cvs{
+  position: absolute;
+  right: -20rpx;
+  top: -40rpx;
+  width: 200rpx;
+  height: 160rpx;
+}
+
+.test-redpoint{
+  position: absolute;
+  right: 20rpx;
+  top: 10rpx;
+  width: 20rpx;
+  height: 20rpx;
+  border-radius: 15rpx;
+  background-color: red;
+
+}
+
+.m-msg-context{
+  font-size: 24rpx;
+  margin-right:40rpx;
+}
+
+.m-msg-time{
+  position: absolute;
+  bottom: 20rpx;
+  right: 40rpx;
+  display: flex;
+  width: 100%;
+  justify-content: flex-end;
+  color: #777;
+}

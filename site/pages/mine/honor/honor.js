@@ -13,7 +13,6 @@ Page({
   onLoad:async function(){
     let data = await get("http://ss.lizhaorong.xyz/getHonors",{uid:app.globalData.uData.uid});
     data = data.data;
-    console.log(data);
     data.forEach((x)=>{
       x.description = x.description.replace(/\\n/g,'\n')
     })

@@ -1,11 +1,17 @@
 //app.js
+const get = require('./utils/util').get;
+const {API_GET_MESSAGE_COUNT} = require('./utils/urls')
 const util = require('./utils/util')
 App({
 
   setUData:function(data){
     this.globalData.uData = data;
   },
-
+  getMessageSize:async function(uid){
+    let data = await get(API_GET_MESSAGE_COUNT,{uid:uid});
+    this.globalData.mSize = data.data[0].num;
+    return data.data[0].num;
+  },
   onLaunch: function () {
 
     wx.getSystemInfo({
@@ -16,7 +22,6 @@ App({
         this.globalData.CustomBar = custom.bottom + custom.top - e.statusBarHeight;
       }
     })
-
 
     // 获取用户信息
     wx.getSetting({
@@ -51,5 +56,6 @@ App({
   globalData: {
     userInfo: null,
     uData: null,
+    mSize:-1
   }
 })

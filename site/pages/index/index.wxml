@@ -1,8 +1,14 @@
 
-<mine wx:if="{{PageCur=='mine'}}"></mine>
+<mine wx:if="{{PageCur=='mine'}}" bind:freshMessage="onInnerFresh" class="mine"></mine>
 <main wx:if="{{PageCur=='main'}}"></main>
+
 <view class="cu-bar tabbar bg-white shadow foot">
-  <view class="action" bindtap="NavChange" data-cur="main">
+<navigator wx:if="{{showMessage}}" url="/pages/message/message" class="m-message-bar">
+  <view class="iconfont iconxinxi_huaban m-message-icon">
+    <view wx:if="{{messages>0}}" class="m-message-count">{{messages}}</view>
+  </view>
+</navigator>
+  <view class="action" bindtap="NavChange" data-cur="main" >
     <view class='cuIcon-cu-image'>
       <image src="/images/tabbar/basics{{PageCur=='main'?'_cur':''}}.png"></image>
     </view>

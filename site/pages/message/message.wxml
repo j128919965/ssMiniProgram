@@ -1,0 +1,28 @@
+<!--pages/message/message.wxml-->
+<cu-custom bgColor="bg-gradual-blue" isBack="{{true}}">
+	<view slot="backText">返回</view>
+	<view slot="content">消息中心</view>
+</cu-custom>
+<view wx:if="{{message.length==0}}" class="m-message-none">
+<image src="https://sunshine-anime.oss-cn-beijing.aliyuncs.com/bcz.png" class="m-message-none-img"></image>
+	您还没有消息哦
+</view>
+
+<view  class="m-msg-container" wx:if="{{message.length>0}}" >
+	<block wx:for="{{message}}" wx:key="id">
+		<view class="m-msg-card" data-index="{{index}}" bindtap="onWatchMSG">
+			<view class="m-msg-title">
+				{{item.title}}
+				<block wx:if="{{item.read==0}}">
+					<view class="test-redpoint"></view>
+					<canvas type="2d" id="cvs{{item.id}}" class=".cvs"></canvas>
+				</block>
+				
+			</view>
+			<view class="m-msg-context">
+				<text>{{item.context}}</text>
+			</view>
+			<view class="m-msg-time">{{item.time}}</view>
+		</view>
+	</block>
+</view>

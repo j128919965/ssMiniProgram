@@ -21,7 +21,8 @@ Component({
         this.setData({uData:app.globalData.uData})
       }else{
         app.loginCallback = (data)=>{
-          this.setData({uData:data})
+          this.setData({uData:data});
+          this.triggerEvent('freshMessage',{uid:data.uid},{})
         }
       }
     }
@@ -32,7 +33,7 @@ Component({
    */
   data: {
     userInfo:app.globalData.userInfo,
-    uData:{cn:'旅行者'}
+    uData:{}
   },
 
   /**
@@ -40,6 +41,7 @@ Component({
    */
   methods: {
     getUserInfo(e){
+      if(!e.detail.userInfo)return;
       this.setData({userInfo:e.detail.userInfo});
       wx.login({
         success: async res => {
@@ -50,6 +52,7 @@ Component({
           data.gender = data.gender == 1;
           this.setData({uData:data})
           app.setUData(data)
+          this.triggerEvent('freshMessage',{uid:data.uid},{})
         }
       })
     }

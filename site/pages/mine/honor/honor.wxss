@@ -33,7 +33,7 @@
 .m-honor-modal{
   position: relative;
 	display: inline-block;
-  width: 100%;
+  width: 700rpx;
   background-color: white;
   color: black;
 }
@@ -52,7 +52,7 @@
 }
 
 .m-honor-modal-content{
-  width: 510rpx;
+  width: 470rpx;
   padding: 10rpx 20rpx;
 }
 
@@ -67,22 +67,31 @@
 }
 
 .m-honor-modal-date{
+  margin: 2px -10px 0 0;
   font-size: 20rpx;
-  height: 28rpx;
-  line-height: 28rpx;
   display: flex;
   font-weight: 100;
+  height: 20px;
+  box-sizing: border-box;
 }
 
 .bluebg{
+  display: flex;
+  justify-content: center;
+  align-items: center;
   background-color: #66CCFF;
   color: white;
-  margin-right: 20rpx;
+  padding: 0 5rpx;
 }
 .blueft{
+  display: flex;
+  justify-content: center;
+  align-items: center;
   background-color: white;
   color: #66CCFF;
   font-weight: 600;
+  font-size: 24rpx;
+  padding: 0 5rpx;
 }
 
 .m-honor-modal-des{
@@ -91,4 +100,5 @@
   margin-top: 30rpx;
   text-align: left;
   letter-spacing: 1px;
+  
 }

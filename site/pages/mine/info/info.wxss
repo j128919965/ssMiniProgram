@@ -35,9 +35,16 @@
   bottom: 0;
   right: -20rpx;
   margin: auto;
-  }
+}
   
 
-  .m-mine-nav-hover{
-    background: white;
-  }
+.m-mine-nav-hover{
+  background: white;
+}
+
+.m-info-tip{
+  font-size: 24rpx;
+  margin:30rpx 210rpx;
+  text-align: center;
+  color:  var(--grey);
+}

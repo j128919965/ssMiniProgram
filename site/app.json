@@ -5,7 +5,8 @@
     "pages/mine/info/info",
     "pages/mine/ewcode/ewcodde",
     "pages/mine/info/setData/setData",
-    "pages/mine/honor/honor"
+    "pages/mine/honor/honor",
+    "pages/message/message"
   ],
   "window": {
     "navigationStyle": "custom",
