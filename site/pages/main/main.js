@@ -35,14 +35,16 @@ Component({
     nav:function(e){
       let item = e.currentTarget.dataset.i;
       //console.log(item);
-      wx.showToast({
-        title: '功能未开放',
-        icon:"none"
-      })
-      
-      // wx.navigateTo({
-      //   url: '/pages/webview/index?url='
-      // })
+      if(item.type=='活动报名'){
+        wx.navigateTo({
+          url: '/pages/activity/activity?id='+item.url,
+        })
+      }else{
+        wx.showToast({
+          title: '功能未开放',
+          icon:"none"
+        })
+      }
     }
   }
 })

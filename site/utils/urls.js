@@ -8,5 +8,6 @@ module.exports={
   API_POST_READ_MSG: SERVER_HOST + '/message/postReadMsg',
   API_GET_HONORS:SERVER_HOST + '/honor/getHonors',
   API_GET_NOTICE:SERVER_HOST + '/notice/getNotice',
-  API_POST_UDATA:SERVER_HOST + '/updateUser'
+  API_POST_UDATA:SERVER_HOST + '/updateUser',
+  API_GET_ACT_BY_ID:LOCAL_SERVER + '/activity/getActivityByID'
 }

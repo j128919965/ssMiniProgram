@@ -16,3 +16,9 @@
   right: 40rpx;
   top: 140rpx;
 }
+
+.m-setinfo-tip{
+  margin-left: 40rpx;
+  font-size: 24rpx;
+  color: #aaa;
+}

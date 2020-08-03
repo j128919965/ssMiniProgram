@@ -1,0 +1,24 @@
+<cu-custom bgColor="bg-gradual-blue" isBack="{{true}}">
+	<view slot="backText">取消</view>
+	<view slot="content">活动详情</view>
+</cu-custom>
+<view wx:if="{{act==null}}" class="m-act-none">
+<image src="https://sunshine-anime.oss-cn-beijing.aliyuncs.com/bcz.png" class="m-act-none-img"></image>
+该活动不存在或已结束报名
+</view>
+<view wx:if="{{!!act}}" class="m-act-container">
+	<view class="m-act-title">{{act.name}}</view>
+	<view class="m-act-date">活动日期： {{act.date}}</view>
+	<view class="m-act-context">
+		<view class="m-act-ctx-inner">
+			<text>
+				{{act.context}}
+			</text>
+		</view>
+	</view>
+	<view class="m-act-ft">
+		报名起止日期：
+		<view class="m-act-ft-d">{{act.fromdate}}</view>
+		<view class="m-act-ft-d">{{act.todate}}</view>
+	</view>
+</view>

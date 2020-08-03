@@ -1,0 +1,16 @@
+/* pages/activity/activity.wxss */
+
+.m-act-none{
+  display: flex;
+  width: 100%;
+  font-size: 30rpx;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.m-act-none-img{
+  width: 80rpx;
+  height: 80rpx;
+  margin:40rpx;
+}

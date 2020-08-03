@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2020-07-30 01:50:58
- * @LastEditTime: 2020-08-03 21:20:28
+ * @LastEditTime: 2020-08-04 01:14:56
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \server\app.js
@@ -19,6 +19,7 @@ const fs = require("fs");
 const message = require('./route/message');
 const honor = require('./route/honor');
 const notice = require('./route/notice');
+const activity = require('./route/activity');
 
 
 const myCall = require('./util').myCall;
@@ -38,6 +39,7 @@ app.use(bodyParser.urlencoded({ limit: '10mb', extended: true }))
 app.use('/message',message);
 app.use('/honor',honor);
 app.use('/notice',notice);
+app.use('/activity',activity);
 
 app.get('/login', async (req, res) =>{
     const APPID = 'wx22285fd44506b373';
@@ -74,8 +76,8 @@ app.post('/updateUser',async (req,res) =>{
     res.status(200).json({ message: '修改成功'})
 })
 
-//http.createServer(app).listen(80);
-https.createServer(httpsOption, app).listen(443);
+http.createServer(app).listen(80);
+//https.createServer(httpsOption, app).listen(443);
 
 module.exports = app;
 
