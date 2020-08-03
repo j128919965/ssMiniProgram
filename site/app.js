@@ -1,6 +1,6 @@
 //app.js
 const get = require('./utils/util').get;
-const {API_GET_MESSAGE_COUNT} = require('./utils/urls')
+const {API_GET_MESSAGE_COUNT,API_LOGIN} = require('./utils/urls')
 const util = require('./utils/util')
 App({
 
@@ -36,7 +36,7 @@ App({
               // 登录
               wx.login({
                 success: async res => {
-                  let data = await util.get('http://ss.lizhaorong.xyz/login', {
+                  let data = await util.get(API_LOGIN, {
                     code: res.code
                   });
                   data = data.data[0]

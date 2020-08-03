@@ -27,11 +27,9 @@ const get = async (url, data) => {
       method:"GET",
       data: data,
       success: (x) => {
-        console.log("请求成功");
         resolve(x.data)
       },
       fail: (x) => {
-        console.log("请求失败")
         resolve(x.data)
       }
     })
@@ -48,11 +46,9 @@ const post = async (url, data) => {
       },
       data: data,
       success: (x) => {
-        console.log("请求成功");
         resolve(x.data)
       },
       fail: (x) => {
-        console.log("请求失败")
         reject(x.data)
       }
     })

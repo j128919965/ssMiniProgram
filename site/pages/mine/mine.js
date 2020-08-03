@@ -1,6 +1,7 @@
 // pages/mine/mine.js
 const app = getApp();
-const util = require('../../utils/util')
+const util = require('../../utils/util');
+const { API_LOGIN } = require('../../utils/urls');
 Component({
   /**
    * 组件的属性列表
@@ -43,15 +44,17 @@ Component({
     getUserInfo(e){
       if(!e.detail.userInfo)return;
       this.setData({userInfo:e.detail.userInfo});
+      app.globalData.userInfo = e.detail.userInfo;
       wx.login({
         success: async res => {
-          let data = await util.get('http://ss.lizhaorong.xyz/login', {
+          let data = await util.get(API_LOGIN, {
             code: res.code
           });
           data = data.data[0]
           data.gender = data.gender == 1;
           this.setData({uData:data})
           app.setUData(data)
+          
           this.triggerEvent('freshMessage',{uid:data.uid},{})
         }
       })

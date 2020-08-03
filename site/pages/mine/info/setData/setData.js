@@ -1,7 +1,7 @@
 // pages/mine/info/setData/setData.js
 const app = getApp();
 const post = require('../../../../utils/util').post;
-const urls = require('../../../../utils/urls')
+const {API_POST_UDATA} = require('../../../../utils/urls')
 Page({
 
   /**
@@ -29,6 +29,7 @@ Page({
 
   save:function(){
     let cs = '';
+    let flag = true;
     switch(this.data.opt)
     {
       case '0' :
@@ -59,12 +60,26 @@ Page({
         app.globalData.uData.stuId = this.data.stuId;
         cs = 'stuId';
         break;
-      default:
-        console.log("sb");
-        return;
+      case '7' :{
+        let regNum=new RegExp('[0-9]','g');
+        if(!regNum.exec(this.data.phone)||this.data.phone.length!=11){
+          flag = false;
+          wx.showToast({
+            title: '请输入正确的手机号！',
+            icon:"none",
+            duration:1500
+          })
+        }else{
+          app.globalData.uData.phone = this.data.phone;
+          cs = 'phone'
+        }
+        break;
+      }
     }
+
+    if(!flag)return;
     //此处需要post新的数据
-    post('http://ss.lizhaorong.xyz/updateUser',{opt:cs,data:this.data[cs],uid:this.data.uid});
+    post(API_POST_UDATA,{opt:cs,data:this.data[cs],uid:this.data.uid});
     
 
     let pages = getCurrentPages(); //当前页面

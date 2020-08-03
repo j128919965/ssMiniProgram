@@ -8,10 +8,11 @@ Page({
 
   
   onLoad: function (options) {
-    console.log('options',options.url)
-    this.setData({
-      url:options.url
-    })
+    if(!!options.url){
+      this.setData({
+        url:options.url
+      })
+    }
   },
 
 })

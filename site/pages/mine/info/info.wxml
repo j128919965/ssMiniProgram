@@ -22,6 +22,12 @@
 		{{uData.name?uData.name:"点击输入姓名"}}
 	</view>
 </navigator>
+<navigator class="cu-form-group margin-top" url="/pages/mine/info/setData/setData?opt=7">
+	<view class="title">手机号</view>
+	<view class="m-info-nav">
+		{{uData.phone?uData.phone:"点击输入手机号"}}
+	</view>
+</navigator>
 <navigator class="cu-form-group" url="/pages/mine/info/setData/setData?opt=3">
 	<view class="title">性别</view>
 	<view class="m-info-nav">

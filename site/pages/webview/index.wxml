@@ -1,3 +1,2 @@
 
-<web-view src="http://lizhaorong.xyz"></web-view>
-<view style="margin:50px">没有导航栏</view>
+<web-view src="{{url}}"></web-view>

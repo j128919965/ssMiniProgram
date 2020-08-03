@@ -3,7 +3,7 @@ const {API_GET_MESSAGE_COUNT} = require('../../utils/urls')
 const app = getApp();
 Page({
   data: {
-    PageCur: 'mine',
+    PageCur: 'main',
     messages:0,
     showMessage:false
   },
@@ -32,7 +32,9 @@ Page({
     if(app.globalData.uData){
       this.freshMessage(app.globalData.uData.uid);
       const mine = this.selectComponent(".mine");
-      mine.setData({uData:app.globalData.uData})
+      if(mine){
+        mine.setData({uData:app.globalData.uData})
+      }
     }
     
     

@@ -42,6 +42,11 @@
       <input placeholder="请输入学号" model:value="{{stuId}}" bindinput="onChange"></input>
     </block>
     <button wx:if="{{changed}}" class="m-info-save bg-green shadow" bindtap="save" style="width:100rpx">保存</button>
+    <block wx:if="{{opt==7}}">
+      <view class="title">手机号</view>
+      <input placeholder="请输入手机号" type="number" model:value="{{phone}}" bindinput="onChange"></input>
+    </block>
+    <button wx:if="{{changed}}" class="m-info-save bg-green shadow" bindtap="save" style="width:100rpx">保存</button>
   </view>
 </view>
 

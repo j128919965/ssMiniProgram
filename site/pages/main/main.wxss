@@ -1,4 +1,65 @@
 /* pages/main/main.wxss */
+@import '/app.wxss';
+
 .sb{
   margin-top: 200px;
+}
+
+.m-main-page{
+  margin-top: 60rpx;
+  padding: 0 20rpx;
+}
+
+.m-main-banner{
+  width: 100%;
+  height: 360rpx;
+  margin-bottom: 20rpx;
+}
+
+.m-m-ban-img{
+  width: 100%;
+  height: 100%;
+}
+
+.m-main-cards{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.m-main-card{
+  width: 348rpx;
+  height: 364rpx;
+  display: flex;
+  border: 1px solid #ccc;
+  flex-direction: column;
+  margin:10rpx 0;
+  border-radius: 6rpx;
+}
+
+.m-main-cd-img{
+  width: 100%;
+  height: 220rpx;
+}
+
+.m-main-cd-context{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 20rpx 0 20rpx 20rpx;
+  height: 144rpx;
+}
+
+.m-main-cd-title{
+  font-size: 32rpx;
+}
+
+.m-main-cd-type{
+  font-size: 24rpx;
+  line-height: 32rpx;
+  height: 32rpx;
+  width: 60px;
+  text-align: center;
+  border: 1px solid #66CCFF;
+  color: #66CCFF;
 }
