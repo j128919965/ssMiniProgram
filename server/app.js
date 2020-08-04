@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2020-07-30 01:50:58
- * @LastEditTime: 2020-08-04 01:14:56
+ * @LastEditTime: 2020-08-04 12:30:51
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \server\app.js
@@ -26,8 +26,8 @@ const myCall = require('./util').myCall;
 const query = require('./util/db').Query;
 
 const httpsOption = {
-    key: fs.readFileSync("./https/4110087_lizhaorong.xyz.key"),
-    cert: fs.readFileSync("./https/4110087_lizhaorong.xyz.pem")
+    key: fs.readFileSync("/lzr.key"),
+    cert: fs.readFileSync("/lzr.pem")
 }
 
 app.use(express.static(__dirname + '/'))
@@ -40,6 +40,10 @@ app.use('/message',message);
 app.use('/honor',honor);
 app.use('/notice',notice);
 app.use('/activity',activity);
+
+app.get('/',(req,res)=>{
+    res.send('<h1>该入口不开放哦</h1>')
+})
 
 app.get('/login', async (req, res) =>{
     const APPID = 'wx22285fd44506b373';
@@ -76,8 +80,8 @@ app.post('/updateUser',async (req,res) =>{
     res.status(200).json({ message: '修改成功'})
 })
 
-http.createServer(app).listen(80);
-//https.createServer(httpsOption, app).listen(443);
+//http.createServer(app).listen(80);
+https.createServer(httpsOption, app).listen(443);
 
 module.exports = app;
 

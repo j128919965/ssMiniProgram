@@ -35,9 +35,9 @@ Page({
       if(mine){
         mine.setData({uData:app.globalData.uData})
       }
+    }else{
+      app.freshMessageCallback = this.onShow;
     }
-    
-    
   },
   onShareAppMessage() {
     return {

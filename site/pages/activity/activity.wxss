@@ -1,4 +1,5 @@
 /* pages/activity/activity.wxss */
+@import '/app.wxss';
 
 .m-act-none{
   display: flex;
@@ -13,4 +14,39 @@
   width: 80rpx;
   height: 80rpx;
   margin:40rpx;
+}
+
+.m-act-container{
+  margin: 20rpx;
+  display: flex;
+  flex-direction: column;
+}
+
+.m-act-title{
+  font-size: 36rpx;
+  margin-bottom: 40rpx;
+}
+
+.m-act-date{
+  color: red;
+}
+
+.m-act-context{
+  width: 650rpx;
+  padding: 40rpx;
+  margin:20rpx auto;
+}
+
+.m-act-ctx-inner{
+
+}
+
+.m-act-ft{
+  display: flex;
+  flex-direction: column;
+}
+
+.m-act-ft-ctn{
+  display: flex;
+  margin-bottom: 40rpx;
 }

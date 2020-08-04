@@ -1,3 +1,11 @@
+/*
+ * @Author: your name
+ * @Date: 2020-08-02 18:09:33
+ * @LastEditTime: 2020-08-04 11:42:25
+ * @LastEditors: your name
+ * @Description: In User Settings Edit
+ * @FilePath: \server\route\message.js
+ */
 const express = require('express');
 const app = require('../app');
 const router = express.Router();
@@ -27,6 +35,15 @@ router.post('/postReadMsg',async(req,res)=>{
   let sql = 'call proc_read_msg(?)';
   myCall(sql,req.body);
   res.status(200).json({message:"已成功确认已读！"});
+})
+
+/**
+ * {uid,title,context}
+ */
+router.post('/sendMessage',async(req,res)=>{
+  let sql = "call proc_send_message(?)";
+  myCall(sql,req.body);
+  res.status(200).json({message:"已成功发送消息！"});
 })
 
 module.exports = router;

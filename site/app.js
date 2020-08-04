@@ -45,6 +45,9 @@ App({
                   if (this.loginCallback) {
                     this.loginCallback(data);
                   }
+                  if(this.freshMessageCallback){
+                    this.freshMessageCallback();
+                  }
                 }
               })
             }

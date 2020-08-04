@@ -30,6 +30,10 @@ const get = async (url, data) => {
         resolve(x.data)
       },
       fail: (x) => {
+        wx.showToast({
+          title: '网络错误',
+          icon:"none"
+        })
         resolve(x.data)
       }
     })
@@ -49,6 +53,10 @@ const post = async (url, data) => {
         resolve(x.data)
       },
       fail: (x) => {
+        wx.showToast({
+          title: '网络错误',
+          icon:"none"
+        })
         reject(x.data)
       }
     })
