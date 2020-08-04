@@ -1,12 +1,8 @@
 /* pages/main/main.wxss */
 @import '/app.wxss';
 
-.sb{
-  margin-top: 200px;
-}
-
 .m-main-page{
-  margin-top: 60rpx;
+  margin: 80rpx 0;
   padding: 0 20rpx;
 }
 
@@ -33,7 +29,7 @@
   display: flex;
   border: 1px solid #ccc;
   flex-direction: column;
-  margin:10rpx 0;
+  margin:20rpx 0;
   border-radius: 6rpx;
 }
 

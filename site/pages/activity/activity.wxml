@@ -2,13 +2,13 @@
 	<view slot="backText">取消</view>
 	<view slot="content">活动详情</view>
 </cu-custom>
-<view>这个页面只看功能，UI还没设计</view>
+<view>这个页面只看功能，UI还没设计。可以随便报名，后期会清理无用数据</view>
 <view wx:if="{{act==null}}" class="m-act-none">
 <image src="https://sunshine-anime.oss-cn-beijing.aliyuncs.com/bcz.png" class="m-act-none-img"></image>
 该活动不存在或已结束报名
 </view>
 <view wx:if="{{!!act}}" class="m-act-container">
-	<view class="m-act-title m-act-context shadow radius-xl shadow-lg bg-white">{{act.name}}</view>
+	<view class="m-act-title">{{act.name}}</view>
 	<view class="m-act-date m-act-context shadow radius-xl shadow-lg bg-white">活动日期： {{act.date}}</view>
 	<view class="m-act-context shadow radius-xl shadow-lg bg-white">
 		<view class="m-act-ctx-inner">

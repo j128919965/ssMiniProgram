@@ -23,8 +23,11 @@
 }
 
 .m-act-title{
-  font-size: 36rpx;
-  margin-bottom: 40rpx;
+  font-size: 42rpx;
+  font-weight: 600;
+  margin:0 0 40rpx 40rpx;
+  text-shadow: 1px ;
+  text-align: center;
 }
 
 .m-act-date{

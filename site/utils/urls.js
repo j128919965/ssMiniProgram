@@ -10,6 +10,6 @@ module.exports={
   API_GET_NOTICE:SERVER_HOST + '/notice/getNotice',
   API_POST_UDATA:SERVER_HOST + '/updateUser',
   API_GET_ACT_BY_ID:SERVER_HOST + '/activity/getActivityByID',
-  API_POST_SIGNUP:LOCAL_SERVER + '/activity/signup',
-  API_GET_HAS_SIGNED:LOCAL_SERVER + '/activity/getHasSigned'
+  API_POST_SIGNUP:SERVER_HOST + '/activity/signup',
+  API_GET_HAS_SIGNED:SERVER_HOST + '/activity/getHasSigned'
 }
