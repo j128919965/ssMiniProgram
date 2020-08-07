@@ -1,33 +1,33 @@
 <cu-custom bgColor="bg-gradual-blue" isBack="{{true}}">
-	<view slot="backText">取消</view>
+	<view slot="backText">返回</view>
 	<view slot="content">活动详情</view>
 </cu-custom>
-<view>这个页面只看功能，UI还没设计。可以随便报名，后期会清理无用数据</view>
 <view wx:if="{{act==null}}" class="m-act-none">
 <image src="https://sunshine-anime.oss-cn-beijing.aliyuncs.com/bcz.png" class="m-act-none-img"></image>
 该活动不存在或已结束报名
 </view>
-<view wx:if="{{!!act}}" class="m-act-container">
-	<view class="m-act-title">{{act.name}}</view>
-	<view class="m-act-date m-act-context shadow radius-xl shadow-lg bg-white">活动日期： {{act.date}}</view>
+<view class="outer" wx:if="{{!!act}}">
+<image src="{{act.backimg}}" class="m-act-title"></image>
+<view class="m-act-container">
 	<view class="m-act-context shadow radius-xl shadow-lg bg-white">
 		<view class="m-act-ctx-inner">
-			<text>{{act.context}}</text>
+			<text>活动介绍：{{act.context}}啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊</text>
 		</view>
 	</view>
+	<view class="m-act-date m-act-context shadow radius-xl shadow-lg bg-white">活动日期： {{act.date}}</view>
 	<view class="m-act-ft m-act-context shadow radius-xl shadow-lg bg-white" >
 		报名起止日期：
 		<view class="m-act-ft-ctn">
 			<view class="m-act-ft-d">{{act.fromdate}}</view>
-			~
+			-
 			<view class="m-act-ft-d">{{act.todate}}</view>
 		</view>
 	</view>
-	<view class="m-act-level  m-act-context shadow radius-xl shadow-lg bg-white">身份要求：{{act.level}}</view>
 	<button disabled="{{!(status==1)}}" class="m-act-btn " bindtap="signup">
 		{{status==1?"报名！":""}}
 		{{status==2?"您还未登录哦":""}}
 		{{status==3?"您的身份不符合要求哦":""}}
 		{{status==4?"已报名":""}}
 	</button>
+</view>
 </view>

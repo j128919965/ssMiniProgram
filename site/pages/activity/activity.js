@@ -21,6 +21,8 @@ Page({
       data = await get(API_GET_ACT_BY_ID,{id:options.id})
       if(data.data.length==0)return;
       data = data.data[0];
+      data.fromdate = data.fromdate.replace(/-/g,'.')
+      data.todate = data.todate.replace(/-/g,'.')
       //console.log(data);
       this.setData({act:data})
     }
@@ -53,5 +55,11 @@ Page({
       app.globalData.mSize++;
     }
 
+  },
+  onShareAppMessage:function(){
+    return {
+      title: this.data.act.title,
+      path: '/pages/activity/activity?id='+this.data.act.id
+    }
   }
 })

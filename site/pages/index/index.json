@@ -2,5 +2,6 @@
   "usingComponents": {
     "mine":"/pages/mine/mine",
     "main":"/pages/main/main"
-  }
+  },
+  "enablePullDownRefresh": true
 }

@@ -6,7 +6,8 @@
     "pages/mine/info/setData/setData",
     "pages/mine/honor/honor",
     "pages/message/message",
-    "pages/activity/activity"
+    "pages/activity/activity",
+    "pages/showPic/showPic"
   ],
   "window": {
     "navigationStyle": "custom",

@@ -17,17 +17,22 @@
 }
 
 .m-act-container{
-  margin: 20rpx;
+  margin: 0 20rpx;
+  padding-top: 450rpx;
   display: flex;
   flex-direction: column;
 }
 
+.outer{
+  position: relative;
+  width: 100%;
+}
+
 .m-act-title{
-  font-size: 42rpx;
-  font-weight: 600;
-  margin:0 0 40rpx 40rpx;
-  text-shadow: 1px ;
-  text-align: center;
+  position: absolute;
+  width: 100%;
+  height: 1624rpx;
+  z-index: -1;
 }
 
 .m-act-date{
@@ -40,9 +45,6 @@
   margin:20rpx auto;
 }
 
-.m-act-ctx-inner{
-
-}
 
 .m-act-ft{
   display: flex;
@@ -51,5 +53,12 @@
 
 .m-act-ft-ctn{
   display: flex;
-  margin-bottom: 40rpx;
+  padding: 20rpx 0;
+  width: 320rpx;
+  display: flex;
+  justify-content: space-between;
+}
+
+.m-act-btn{
+  margin-top: 40rpx;
 }

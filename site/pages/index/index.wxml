@@ -1,6 +1,8 @@
+<block wx:if="{{vis}}">
+<mine bind:freshMessage="onInnerFresh" hidden="{{PageCur!='mine'}}" class="mine {{PageCur=='mine'?'':'hided'}}"></mine>
+<main class="{{PageCur=='main'?'':'hided'}}"></main>
+</block>
 
-<mine wx:if="{{PageCur=='mine'}}" bind:freshMessage="onInnerFresh" class="mine"></mine>
-<main wx:if="{{PageCur=='main'}}"></main>
 
 <view class="cu-bar tabbar bg-white shadow foot">
 <navigator wx:if="{{showMessage}}" url="/pages/message/message" class="m-message-bar">

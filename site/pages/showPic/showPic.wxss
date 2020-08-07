@@ -1,0 +1,4 @@
+/* pages/showPic/showPic.wxss */
+.m-showimg-img{
+  width: 100%;
+}

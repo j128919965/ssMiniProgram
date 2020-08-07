@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2020-07-30 01:50:58
- * @LastEditTime: 2020-08-04 12:30:51
+ * @LastEditTime: 2020-08-07 22:32:56
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \server\app.js
@@ -25,10 +25,10 @@ const activity = require('./route/activity');
 const myCall = require('./util').myCall;
 const query = require('./util/db').Query;
 
-const httpsOption = {
-    key: fs.readFileSync("/lzr.key"),
-    cert: fs.readFileSync("/lzr.pem")
-}
+// const httpsOption = {
+//     key: fs.readFileSync("/https/lzr.key"),
+//     cert: fs.readFileSync("/https/lzr.pem")
+// }
 
 app.use(express.static(__dirname + '/'))
 app.use(compression())
@@ -80,8 +80,8 @@ app.post('/updateUser',async (req,res) =>{
     res.status(200).json({ message: '修改成功'})
 })
 
-//http.createServer(app).listen(80);
-https.createServer(httpsOption, app).listen(443);
+http.createServer(app).listen(80);
+//https.createServer(httpsOption, app).listen(443);
 
 module.exports = app;
 

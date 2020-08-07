@@ -11,5 +11,6 @@ module.exports={
   API_POST_UDATA:SERVER_HOST + '/updateUser',
   API_GET_ACT_BY_ID:SERVER_HOST + '/activity/getActivityByID',
   API_POST_SIGNUP:SERVER_HOST + '/activity/signup',
-  API_GET_HAS_SIGNED:SERVER_HOST + '/activity/getHasSigned'
+  API_GET_HAS_SIGNED:SERVER_HOST + '/activity/getHasSigned',
+  API_GET_SWIPER:SERVER_HOST + '/notice/getSwiper'
 }

@@ -5,7 +5,8 @@ Page({
   data: {
     PageCur: 'main',
     messages:0,
-    showMessage:false
+    showMessage:false,
+    vis:true
   },
   NavChange(e) {
     this.setData({
@@ -46,5 +47,10 @@ Page({
       path: '/pages/index/index'
     }
   },
-  
+  onPullDownRefresh(){
+    this.onShow();
+    this.setData({vis:false},()=>{
+      this.setData({vis:true})
+    })
+  }
 })
