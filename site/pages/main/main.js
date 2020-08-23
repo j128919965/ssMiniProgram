@@ -37,7 +37,7 @@ Component({
   methods: {
     nav:function(e){
       let item = e.currentTarget.dataset.i;
-      console.log(item);
+      //console.log(item);
       if(item.type=='活动报名'){
         wx.navigateTo({
           url: '/pages/activity/activity?id='+item.url,

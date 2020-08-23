@@ -43,7 +43,7 @@ Page({
   onShareAppMessage() {
     return {
       title: '杭师大sunshine动漫社',
-      imageUrl: '/images/share.jpg',
+      imageUrl: 'https://sunshine-anime.oss-cn-beijing.aliyuncs.com/%E9%A1%B5%E7%9C%89-%E6%A8%A1%E7%B3%8A%403x.png',
       path: '/pages/index/index'
     }
   },
@@ -52,5 +52,6 @@ Page({
     this.setData({vis:false},()=>{
       this.setData({vis:true})
     })
+    wx.stopPullDownRefresh();
   }
 })

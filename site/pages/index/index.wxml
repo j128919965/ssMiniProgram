@@ -12,14 +12,14 @@
 </navigator>
   <view class="action" bindtap="NavChange" data-cur="main" >
     <view class='cuIcon-cu-image'>
-      <image src="/images/tabbar/basics{{PageCur=='main'?'_cur':''}}.png"></image>
+      <image src="/images/tabbar/kbn{{PageCur=='main'?'_cur':''}}.png"></image>
     </view>
-    <view class="{{PageCur=='main'?'text-green':'text-gray'}}">主页</view>
+    <view class="{{PageCur=='main'?'text-orange':'text-gray'}}">主页</view>
   </view>
   <view class="action" bindtap="NavChange" data-cur="mine">
     <view class='cuIcon-cu-image'>
-      <image src="/images/tabbar/component{{PageCur=='mine'?'_cur':''}}.png"></image>
+      <image src="/images/tabbar/kbl{{PageCur=='mine'?'_cur':''}}.png"></image>
     </view>
-    <view class="{{PageCur=='mine'?'text-green':'text-gray'}}">我的</view>
+    <view class="{{PageCur=='mine'?'text-orange':'text-gray'}}">我的</view>
   </view>
 </view>

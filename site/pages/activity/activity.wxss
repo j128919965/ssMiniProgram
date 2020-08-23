@@ -18,7 +18,7 @@
 
 .m-act-container{
   margin: 0 20rpx;
-  padding-top: 450rpx;
+  padding-top: 230rpx;
   display: flex;
   flex-direction: column;
 }
@@ -35,20 +35,36 @@
   z-index: -1;
 }
 
-.m-act-date{
-  color: red;
+
+.m-act-inner{
+  height: 860rpx;
+  padding: 30rpx 100rpx;
+}
+
+.m-act-name{
+  width: 100%;
+  text-align: center;
+  height: 60rpx;
+  line-height: 60rpx;
+  font-size:40rpx ;
+  color: #281F7C;
 }
 
 .m-act-context{
-  width: 650rpx;
-  padding: 40rpx;
-  margin:20rpx auto;
+  width: 100%;
+  font-size: 30rpx;
+  color: white;
+  margin:40rpx auto;
 }
 
+.m-act-date{
+  color: #FFE202;
+}
 
 .m-act-ft{
   display: flex;
   flex-direction: column;
+  color: #F1B9FA;
 }
 
 .m-act-ft-ctn{
@@ -61,4 +77,22 @@
 
 .m-act-btn{
   margin-top: 40rpx;
+  background-color:rgba(0,0,0,0) !important;
+  width: 100% !important;
+  color: #281F7C !important;
+}
+
+.m-act-md-btn{
+  width: 150rpx !important;
+  margin: 0 40rpx !important;
+}
+
+.m-act-md-foot{
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+}
+
+.m-disable-btn{
+  color: rgba(40,31,124,0.4) !important;
 }

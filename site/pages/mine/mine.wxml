@@ -1,6 +1,6 @@
 <!--pages/mine/mine.wxml-->
 <scroll-view scroll-y class="scrollPage">
-<image src='/images/bak.jpg' mode='scaleToFill' class='m-mine-topimg' ></image>
+<image src='https://sunshine-anime.oss-cn-beijing.aliyuncs.com/%E9%A1%B5%E7%9C%89-%E6%A8%A1%E7%B3%8A%403x.png' mode='scaleToFill' class='m-mine-topimg' ></image>
 <view class="m-mine-inner">
   <view class="m-mine-inner-name" >
     <view class="m-mine-inner-hello">你好 </view> 

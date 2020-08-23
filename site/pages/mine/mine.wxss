@@ -32,7 +32,8 @@
 
 .m-mine-inner{
   width: 710rpx;
-  margin:40rpx 20rpx 100rpx 20rpx;
+  margin:40rpx 20rpx 80rpx 20rpx;
+  padding-bottom: 20rpx;
 }
 
 .m-mine-inner-name{

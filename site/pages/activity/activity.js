@@ -9,7 +9,8 @@ Page({
    */
   data: {
     act:null,
-    status:1
+    status:1,
+    modalName:""
   },
 
   /**
@@ -42,6 +43,12 @@ Page({
       this.setData({status:4})
     }
   },
+  showmd:function () {
+    this.setData({modalName:"DialogModal1"});
+  },
+  closemd:function(){
+    this.setData({modalName:""});
+  },
   signup:async function(){
     let data = {uid:app.globalData.uData.uid,aid:this.data.act.id}
     let x = await post(API_POST_SIGNUP,data);
@@ -53,8 +60,12 @@ Page({
       })
       this.setData({status:4})
       app.globalData.mSize++;
+    }else{
+      wx.showToast({
+        title: "网络错误,提交失败",
+      })
     }
-
+    this.closemd();
   },
   onShareAppMessage:function(){
     return {

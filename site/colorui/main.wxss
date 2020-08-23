@@ -1844,8 +1844,8 @@ button.icon.lg {
 }
 
 .cu-bar.tabbar .action .cuIcon-cu-image image {
-	width: 50rpx;
-	height: 50rpx;
+	width: 60rpx;
+	height: 60rpx;
 	display: inline-block;
 }
 

@@ -3,31 +3,58 @@
 	<view slot="content">活动详情</view>
 </cu-custom>
 <view wx:if="{{act==null}}" class="m-act-none">
-<image src="https://sunshine-anime.oss-cn-beijing.aliyuncs.com/bcz.png" class="m-act-none-img"></image>
-该活动不存在或已结束报名
+	<image src="https://sunshine-anime.oss-cn-beijing.aliyuncs.com/bcz.png" class="m-act-none-img"></image>
+	该活动不存在或已结束报名
 </view>
 <view class="outer" wx:if="{{!!act}}">
-<image src="{{act.backimg}}" class="m-act-title"></image>
-<view class="m-act-container">
-	<view class="m-act-context shadow radius-xl shadow-lg bg-white">
-		<view class="m-act-ctx-inner">
-			<text>活动介绍：{{act.context}}啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊</text>
+	<image src="{{act.backimg}}" class="m-act-title"></image>
+	<view class="m-act-container">
+		<view class="m-act-name">{{act.name}}</view>
+		<view class="m-act-inner">
+			<view class="m-act-context">
+				<view class="m-act-ctx-inner">
+					<text>活动介绍：{{act.context}}</text>
+				</view>
+			</view>
+			<view wx:if="{{act.warning}}" class="m-act-date m-act-context">{{act.warning}}</view>
+			<view class="m-act-date m-act-context">活动日期：<br/> {{act.date}}</view>
+			<view class="m-act-ft m-act-context">
+				报名起止日期：
+				<view class="m-act-ft-ctn">
+					<view class="m-act-ft-d">{{act.fromdate}}</view>
+					-
+					<view class="m-act-ft-d">{{act.todate}}</view>
+				</view>
+			</view>
 		</view>
+		<button disabled="{{!(status==1)}}" class="m-act-btn {{status==1?'':'m-disable-btn'}}" bindtap="showmd">
+			{{status==1?"立即报名！":""}}
+			{{status==2?"还未登录哦":""}}
+			{{status==3?"身份不符":""}}
+			{{status==4?"已报名":""}}
+		</button>
 	</view>
-	<view class="m-act-date m-act-context shadow radius-xl shadow-lg bg-white">活动日期： {{act.date}}</view>
-	<view class="m-act-ft m-act-context shadow radius-xl shadow-lg bg-white" >
-		报名起止日期：
-		<view class="m-act-ft-ctn">
-			<view class="m-act-ft-d">{{act.fromdate}}</view>
-			-
-			<view class="m-act-ft-d">{{act.todate}}</view>
-		</view>
-	</view>
-	<button disabled="{{!(status==1)}}" class="m-act-btn " bindtap="signup">
-		{{status==1?"报名！":""}}
-		{{status==2?"您还未登录哦":""}}
-		{{status==3?"您的身份不符合要求哦":""}}
-		{{status==4?"已报名":""}}
-	</button>
 </view>
+
+<view class="cu-modal {{modalName=='DialogModal1'?'show':''}}">
+  <view class="cu-dialog">
+    <view class="cu-bar bg-white justify-end">
+      <view class="content">报名活动</view>
+      <view class="action" bindtap="closemd">
+        <text class="cuIcon-close text-red"></text>
+      </view>
+    </view>
+    <view class="padding-xl">
+      确定要报名吗？
+			<br/>
+			<view wx:if="{{act.warning}}">{{act.warning}}</view>
+    </view>
+    <view class="cu-bar bg-white justify-end">
+      <view class="action m-act-md-foot">
+        <button class="cu-btn m-act-md-btn line-green text-green" bindtap="closemd">取消</button>
+        <button class="cu-btn m-act-md-btn bg-green margin-left" bindtap="signup">确定</button>
+
+      </view>
+    </view>
+  </view>
 </view>
