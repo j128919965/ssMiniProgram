@@ -3,7 +3,9 @@ const {
   API_ST_GROUP,
   API_ST_SCAN_CARD,
   API_ST_SAVE_LIST,
-  API_ST_GET_CARDS
+  API_ST_GET_CARDS,
+  API_ST_STATUS,
+  API_ST_POINTS
 } = require('../../../utils/urls');
 const {
   post,
@@ -12,6 +14,8 @@ const {
 
 Page({
   data: {
+    st_status:0,
+    points:[],
     touch: false,
     gid: -1,
     master: false,
@@ -19,7 +23,7 @@ Page({
     cardInfo: [{
         name: "海潮涌动",
         point: 200,
-        prop: 1
+        prop: 3
       },
       {
         name: "烈焰焚尽",
@@ -29,7 +33,7 @@ Page({
       {
         name: "冰锥术",
         point: 100,
-        prop: 3
+        prop: 1
       },
       {
         name: "闪电链",
@@ -38,22 +42,23 @@ Page({
       },
       {
         name: "奥数冲击",
-        point: 300,
+        point: 200,
         prop: 5
       }
     ],
-    cardType: [{
-        color: "#56B9F3",
-        icon: "iconfenzu"
-      }, //水
+    cardType: [
+      {
+        color: "#90D8DB",
+        icon: "iconicon16"
+      }, //冰
       {
         color: "#E96F4D",
         icon: "iconhot"
       }, //火
       {
-        color: "#90D8DB",
-        icon: "iconicon16"
-      }, //冰
+        color: "#56B9F3",
+        icon: "iconfenzu"
+      }, //水
       {
         color: "#E2E900",
         icon: "iconleidian"
@@ -65,6 +70,14 @@ Page({
     ]
   },
   onLoad: async function (options) {
+    let st_status = await get(API_ST_STATUS);
+    if(st_status==0)return;
+    this.setData({st_status:st_status})
+    if(st_status==2){
+      let points = await get(API_ST_POINTS);
+      this.setData({points:points})
+      return;
+    }
     let uData = app.globalData.uData;
     if (!uData) {
       app.callbacks.push((data) => {
@@ -107,6 +120,7 @@ Page({
     });
   },
   scan() {
+    if(!this.data.master)return;
     let that = this;
     let data = wx.scanCode({
       onlyFromCamera: false,
@@ -158,7 +172,7 @@ Page({
             showCancel: false,
             confirmText: "好",
             title: '失败！',
-            content: "这张卡片已经扫过了哦"
+            content: "这张卡片已经扫过了，或该环节已经结束了哦"
           })
         }
       }
@@ -171,9 +185,14 @@ Page({
         title: '保存成功！',
         icon:"success"
       })
+    }else{
+      wx.showToast({
+        title: '该环节已结束！'
+      })
     }
   },
   async save() {
+    if(!this.data.master)return;
     return await post(API_ST_SAVE_LIST, {
       list: this.data.list.map(e => e.id),
       gid: this.data.gid

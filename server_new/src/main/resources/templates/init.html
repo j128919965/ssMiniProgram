@@ -3,10 +3,63 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    <script src="https://cdn.bootcdn.net/ajax/libs/axios/0.1.0/axios.min.js"></script>
 </head>
 <body>
-<form action="/api/st/init" method="post">
-    <button type="submit">刷新！</button>
-</form>
+<main>
+    <button id="clear">清空素拓状态！</button>
+    <br><br>
+
+    <button id="init">开始素拓！！</button>
+    <br><br>
+
+    <button id="getpoint">获取所有小队分数！</button>
+    <br><br>
+    <button id="stopBtn">停止素拓！</button>
+    <br><br>
+    分数板：
+    <div id="points">
+
+    </div>
+</main>
+
 </body>
+<script>
+    const gt = name=>document.getElementById(name);
+    const clear = ()=>{
+        let i = confirm("您确定要清空么？");
+        if(!i)return;
+        axios.post('/api/st/clear').then(res=>{
+            if(res.success){
+                alert("已清空！")
+            }
+        })
+    }
+    const init  = ()=>{
+        let i = confirm("您确定要开始么？");
+        if(!i)return;
+        axios.post('/api/st/init').then(res=>{
+            if(res.success){
+                alert("初始化成功！")
+            }
+        })
+    }
+    const getPoint = ()=>{
+        axios.get('/api/st/points').then(res=>{
+            let data = res.data;
+            let str = '';
+            data.forEach(e=>str+=`组别：  ${e.id}  ， 分数 ： ${e.point} <br/>`)
+            gt('points').innerHTML = str;
+        })
+    }
+    const stopSt = ()=>{
+        let i = confirm("您确定要停止么？");
+        if(!i)return;
+        axios.post('/api/st/stop').then(res=>console.log(res.success?"停止成功！":"停止失败！"))
+    }
+    gt("init").onclick = init;
+    gt('getpoint').onclick = getPoint;
+    gt('stopBtn').onclick = stopSt;
+    gt('clear').onclick = clear;
+</script>
 </html>

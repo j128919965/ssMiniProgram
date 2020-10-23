@@ -8,6 +8,7 @@ import xyz.lizhaorong.dao.CardMapper;
 import xyz.lizhaorong.dao.GroupMapper;
 import xyz.lizhaorong.entity.st.Card;
 import xyz.lizhaorong.entity.st.CardInfo;
+import xyz.lizhaorong.entity.st.Group;
 import xyz.lizhaorong.entity.st.GroupSelect;
 
 import java.util.*;
@@ -32,16 +33,29 @@ public class StService {
 
     private final Map<Integer,List<Integer>> groupResult = new HashMap<>();
 
+    // 0 还未开始
+    // 1 已经开始
+    // 2 已经结束
+    private volatile int st_state = 0;
 
+    public void clear(){
+        st_state = 0;
+    }
 
     public void init(){
         cards.clear();
         groupResult.clear();
         cardMapper.getAllCards().forEach(e->cards.put(e.getId(),e));
         cardInfoMapper.selectAll().forEach(e->cardInfoMap.put(e.getType(),e));
+        st_state = 1;
+    }
+
+    public int getState(){
+        return st_state;
     }
 
     public boolean scanCard(Integer id,Integer gid){
+        if(st_state != 1) return false;
         Card card = cards.get(id);
         boolean flag = false;
         synchronized (card){
@@ -70,9 +84,11 @@ public class StService {
      * @param gid
      * @param list
      */
-    public void saveList(Integer gid, Integer[] list) {
+    public boolean saveList(Integer gid, Integer[] list) {
+        if (st_state!=1)return false;
         groupResult.put(gid,Arrays.asList(list));
         System.out.println(groupResult);
+        return true;
     }
 
     /**
@@ -100,6 +116,7 @@ public class StService {
             int nextState = 0;
             //如果当前没有印记
             if(nowState==0){
+                log.debug("当前没有印记！");
                 nextState=prop<5?prop:0;
             }
             //如果当前有印记
@@ -152,15 +169,18 @@ public class StService {
                     case 3:{
                         switch (nowState){
                             case 1:{
+                                log.debug("水+冰");
                                 nextState=1;
                                 nextBigger=50;
                                 break;
                             }
                             case 2:{
+                                log.debug("水+火");
                                 point*=2;
                                 break;
                             }
                             case 4:{
+                                log.debug("水+雷");
                                 nextState=4;
                                 point+=50;
                                 break;
@@ -174,15 +194,18 @@ public class StService {
                     case 4:{
                         switch (nowState){
                             case 1:{
+                                log.debug("雷+冰");
                                 nextBigger=1.3;
                                 break;
                             }
                             case 2:{
+                                log.debug("雷+火");
                                 nextState=2;
                                 point+=50;
                                 break;
                             }
                             case 3:{
+                                log.debug("雷+水");
                                 nextState=4;
                                 point+=50;
                                 break;
@@ -194,6 +217,7 @@ public class StService {
                         break;
                     }
                     case 5:{
+                        log.debug("奥数");
                         point *= 1.6;
                         break;
                     }
@@ -204,20 +228,31 @@ public class StService {
             if(preBigger>1){
                 if(preBigger<3){
                     //小于3，即为倍数放大
+                    log.debug("受上一轮影响，本次伤害翻为 " + preBigger + " 倍！");
                     point*=preBigger;
                 }else {
                     //大于3，即为增加数值
+                    log.debug("受上一轮影响，本次伤害增加 " + preBigger + " 点！");
                     point+=preBigger;
                 }
             }
+            log.debug("本次伤害："+point);
+            log.debug("");
 
             allPoint+=point;
             nowState = nextState;
         }
-        return 0;
+        log.debug("all point : "+ allPoint);
+        return allPoint;
     }
 
 
+    public Set<Integer> getAllGroups() {
+        Set<Integer> integers = groupResult.keySet();
+        return groupResult.keySet();
+    }
 
-
+    public void stopSt() {
+        st_state = 2;
+    }
 }

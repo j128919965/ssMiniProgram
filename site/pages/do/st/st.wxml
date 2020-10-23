@@ -1,13 +1,38 @@
+<view wx:if="{{st_status==0}}">
+	<cu-custom bgColor="bg-gradual-red" isBack="{{true}}">
+		<view slot="backText">返回</view>
+		<view slot="content">ss2020素拓</view>
+	</cu-custom>
+	<text>
+		素拓还未开始哦
+	</text>
+</view>
+
+<view wx:if="{{st_status==2}}">
+	<cu-custom bgColor="bg-gradual-red" isBack="{{true}}">
+		<view slot="backText">返回</view>
+		<view slot="content">ss2020素拓</view>
+	</cu-custom>
+	<view>分数列表：</view>
+	<block wx:for="{{points}}">
+		{{item.id}}队 : {{item.point}} 分 <br/>
+	</block>
+</view>
+
+<block wx:if="{{st_status==1}}">
 <block wx:if="{{gid>0}}">
 	<scroll-view id="movebox">
 			<cu-custom bgColor="bg-gradual-red" isBack="{{true}}">
 				<view slot="backText">返回</view>
 				<view slot="content">ss2020素拓</view>
 			</cu-custom>
-			<button  catchtap="scan">扫描新卡</button>
-			<view style="font-size:22rpx;color:red;width:100%;text-align: center;">
-				长按卡片拖动排序
-			</view>
+			<block wx:if="{{master}}">
+				<button  catchtap="scan">扫描新卡</button>
+				<view style="font-size:22rpx;color:red;width:100%;text-align: center;">
+					长按卡片拖动排序
+				</view>
+			</block>
+			<view wx:if="{{list.length==0}}">您的队伍当前还没有卡片！</view>
 			<block wx:for="{{list}}" wx:key="index">
 				<view class="{{moveoutindex==index?'changemovenow':''}}" style="height:0;transition: height 0.2s;"></view>
 				<view class="s-l-i"
@@ -21,9 +46,13 @@
 				</view>
 			</block>
 	</scroll-view>
-	
-	<button  catchtap="saveBtn">保存顺序</button>
+	<button  catchtap="saveBtn" wx:if="{{master}}">保存顺序</button>
 </block>
 <block wx:if="{{gid==-1}}">
+	<cu-custom bgColor="bg-gradual-red" isBack="{{true}}">
+		<view slot="backText">返回</view>
+		<view slot="content">ss2020素拓</view>
+	</cu-custom>
 	您暂无队伍哦
+</block>
 </block>
