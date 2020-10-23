@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="xyz.lizhaorong.dao.ActivityMapper">
+  <resultMap id="BaseResultMap" type="xyz.lizhaorong.entity.Activity">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="fromdate" jdbcType="VARCHAR" property="fromdate" />
+    <result column="todate" jdbcType="VARCHAR" property="todate" />
+    <result column="date" jdbcType="VARCHAR" property="date" />
+    <result column="level" jdbcType="VARCHAR" property="level" />
+    <result column="backimg" jdbcType="VARCHAR" property="backimg" />
+    <result column="warning" jdbcType="VARCHAR" property="warning" />
+    <result column="context" jdbcType="LONGVARCHAR" property="context" />
+  </resultMap>
+</mapper>

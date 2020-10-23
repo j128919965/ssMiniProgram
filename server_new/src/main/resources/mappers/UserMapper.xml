@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="xyz.lizhaorong.dao.UserMapper">
+  <resultMap id="BaseResultMap" type="xyz.lizhaorong.entity.User">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <id column="uid" jdbcType="INTEGER" property="uid" />
+    <result column="cn" jdbcType="VARCHAR" property="cn" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="department" jdbcType="INTEGER" property="department" />
+    <result column="gender" jdbcType="BIT" property="gender" />
+    <result column="birthday" jdbcType="VARCHAR" property="birthday" />
+    <result column="className" jdbcType="VARCHAR" property="classname" />
+    <result column="stuId" jdbcType="VARCHAR" property="stuid" />
+    <result column="wxid" jdbcType="VARCHAR" property="wxid" />
+    <result column="role" jdbcType="BIT" property="role" />
+    <result column="level" jdbcType="VARCHAR" property="level" />
+    <result column="phone" jdbcType="VARCHAR" property="phone" />
+  </resultMap>
+
+  <update id="updateUser">
+    update user set ${opt} = #{data} where uid=#{uid}
+  </update>
+</mapper>

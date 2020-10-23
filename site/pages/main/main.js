@@ -1,6 +1,6 @@
 // pages/main/main.js
 const {get} = require('../../utils/util');
-const { API_GET_NOTICE,API_GET_SWIPER } = require('../../utils/urls');
+const { API_NOTICE,API_SWIPER } = require('../../utils/urls');
 const notice_sort = (a,b)=>{
   return b.level - a.level;
 }
@@ -23,10 +23,10 @@ Component({
   lifetimes:{
     attached:async function(){
 
-      let swp = await get(API_GET_SWIPER);
-      this.setData({urls:swp.data})
-      let data = await get(API_GET_NOTICE);
-      data = data.data.sort(notice_sort);
+      let swp = await get(API_SWIPER);
+      this.setData({urls:swp})
+      let data = await get(API_NOTICE);
+      data = data.sort(notice_sort);
       this.setData({cards:data})
     }
   },
@@ -41,6 +41,10 @@ Component({
       if(item.type=='活动报名'){
         wx.navigateTo({
           url: '/pages/activity/activity?id='+item.url,
+        })
+      }else if(item.type=='素质拓展'){
+        wx.navigateTo({
+          url: '/pages/do/st/st',
         })
       }else{
         wx.navigateTo({

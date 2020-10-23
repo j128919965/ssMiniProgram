@@ -1,5 +1,5 @@
 // pages/message/message.js
-const {API_GET_MESSAGE_LIST,API_POST_READ_MSG} = require('../../utils/urls');
+const {API_MESSAGE,API_READ_MSG} = require('../../utils/urls');
 const { post,get } = require('../../utils/util');
 const app = getApp();
 
@@ -26,8 +26,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: async function (options) {
-    let data = await get(API_GET_MESSAGE_LIST,{uid:app.globalData.uData.uid});
-    data = data.data;
+    let data = await get(API_MESSAGE,{uid:app.globalData.uData.uid});
     data.sort(mySort);
     this.setData({message:data})
   },
@@ -38,7 +37,7 @@ Page({
       msg[index].read = 1;
       this.setData({message:msg})
       app.globalData.mSize = app.globalData.mSize-1;
-      post(API_POST_READ_MSG,{id:msg[index].id});
+      post(`${API_READ_MSG}/${msg[index].id}`);
     }
     
   },

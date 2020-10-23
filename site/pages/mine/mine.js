@@ -22,6 +22,7 @@ Component({
         this.setData({uData:app.globalData.uData})
       }else{
         app.loginCallback = (data)=>{
+          console.log(data)
           this.setData({uData:data});
           this.triggerEvent('freshMessage',{uid:data.uid},{})
         }

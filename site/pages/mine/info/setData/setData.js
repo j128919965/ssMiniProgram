@@ -1,7 +1,7 @@
 // pages/mine/info/setData/setData.js
 const app = getApp();
 const post = require('../../../../utils/util').post;
-const {API_POST_UDATA} = require('../../../../utils/urls')
+const {API_USER} = require('../../../../utils/urls')
 Page({
 
   /**
@@ -79,7 +79,7 @@ Page({
 
     if(!flag)return;
     //此处需要post新的数据
-    post(API_POST_UDATA,{opt:cs,data:this.data[cs],uid:this.data.uid});
+    post(API_USER,{opt:cs,data:this.data[cs],uid:this.data.uid});
     
 
     let pages = getCurrentPages(); //当前页面

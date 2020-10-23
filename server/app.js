@@ -60,7 +60,7 @@ app.get('/login', async (req, res) =>{
         }else{  
             res.status(502).json({ message: '服务器出现错误！' })
         }
-    })  
+    })
 })
 
 app.get('/logins', async (req, res) =>{

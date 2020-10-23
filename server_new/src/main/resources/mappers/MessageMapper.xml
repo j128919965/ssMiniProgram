@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="xyz.lizhaorong.dao.MessageMapper">
+  <resultMap id="BaseResultMap" type="xyz.lizhaorong.entity.Message">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="time" jdbcType="VARCHAR" property="time" />
+    <result column="read" jdbcType="BIT" property="read" />
+    <result column="to" jdbcType="INTEGER" property="to" />
+    <result column="title" jdbcType="VARCHAR" property="title" />
+    <result column="context" jdbcType="LONGVARCHAR" property="context" />
+  </resultMap>
+
+  <insert id="insertMessage" parameterType="xyz.lizhaorong.entity.Message">
+    insert into message (time, context,  `to`, title) VALUES (#{time},#{context},#{to},#{title});
+  </insert>
+</mapper>

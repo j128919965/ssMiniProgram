@@ -9,10 +9,11 @@ App({
   },
   getMessageSize:async function(uid){
     let data = await get(API_GET_MESSAGE_COUNT,{uid:uid});
-    this.globalData.mSize = data.data[0].num;
-    return data.data[0].num;
+    this.globalData.mSize = data;
+    return data;
   },
   onLaunch: function () {
+    this.callbacks = []
 
     wx.getSystemInfo({
       success: e => {
@@ -39,9 +40,11 @@ App({
                   let data = await util.get(API_LOGIN, {
                     code: res.code
                   });
-                  data = data.data[0]
                   data.gender = data.gender == 1;
                   this.globalData.uData = data;
+                  for(let i = 0; i < this.callbacks.length; i++){
+                    this.callbacks[i](data);
+                  }
                   if (this.loginCallback) {
                     this.loginCallback(data);
                   }

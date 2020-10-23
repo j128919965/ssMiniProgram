@@ -1,0 +1,29 @@
+<block wx:if="{{gid>0}}">
+	<scroll-view id="movebox">
+			<cu-custom bgColor="bg-gradual-red" isBack="{{true}}">
+				<view slot="backText">返回</view>
+				<view slot="content">ss2020素拓</view>
+			</cu-custom>
+			<button  catchtap="scan">扫描新卡</button>
+			<view style="font-size:22rpx;color:red;width:100%;text-align: center;">
+				长按卡片拖动排序
+			</view>
+			<block wx:for="{{list}}" wx:key="index">
+				<view class="{{moveoutindex==index?'changemovenow':''}}" style="height:0;transition: height 0.2s;"></view>
+				<view class="s-l-i"
+					style="background:{{cardType[item.type-1].color}};{{nowmoveindex==index?('position:absolute;top:'+movetop+'px;height:'+itemheight+'px;z-index:9;'):''}}"
+					id="movelist{{index}}" bindlongpress="press" catchtouchmove="listitemmove" catchtouchend="listitemmove"
+					data-index="{{index}}">
+					<view class="s-l-i-i"><text class="iconfont {{cardType[cardInfo[item.type-1].prop-1].icon}}"
+							style="font-size:46rpx"></text></view>
+					<view class="s-l-i-t">{{cardInfo[item.type-1].name}}</view>
+					<view class="s-l-i-p">{{cardInfo[item.type-1].point}}</view>
+				</view>
+			</block>
+	</scroll-view>
+	
+	<button  catchtap="saveBtn">保存顺序</button>
+</block>
+<block wx:if="{{gid==-1}}">
+	您暂无队伍哦
+</block>

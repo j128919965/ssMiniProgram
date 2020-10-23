@@ -7,7 +7,9 @@
     "pages/mine/honor/honor",
     "pages/message/message",
     "pages/activity/activity",
-    "pages/showPic/showPic"
+    "pages/showPic/showPic",
+    "pages/do/st/st"
+    
   ],
   "window": {
     "navigationStyle": "custom",

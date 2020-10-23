@@ -1,6 +1,6 @@
 // pages/activity/activity.js
 const {get,post} = require('../../utils/util');
-const { API_GET_ACT_BY_ID ,API_POST_SIGNUP,API_GET_HAS_SIGNED} = require('../../utils/urls');
+const { API_ACTIVITY ,API_POST_SIGNUP,API_GET_HAS_SIGNED} = require('../../utils/urls');
 const app = getApp();
 Page({
 
@@ -19,9 +19,9 @@ Page({
   onLoad: async function (options) {
     let data;
     if(!!options.id){
-      data = await get(API_GET_ACT_BY_ID,{id:options.id})
-      if(data.data.length==0)return;
-      data = data.data[0];
+      data = await get(`${API_ACTIVITY}/${options.id}`)
+      if(data.length==0)return;
+      console.log(data);
       data.fromdate = data.fromdate.replace(/-/g,'.')
       data.todate = data.todate.replace(/-/g,'.')
       //console.log(data);
@@ -39,7 +39,7 @@ Page({
       return;
     }
     let signed = await get(API_GET_HAS_SIGNED,{uid:app.globalData.uData.uid,aid:data.id});
-    if(signed.data){
+    if(signed){
       this.setData({status:4})
     }
   },
@@ -53,9 +53,9 @@ Page({
     let data = {uid:app.globalData.uData.uid,aid:this.data.act.id}
     let x = await post(API_POST_SIGNUP,data);
     console.log(x);
-    if(x.message=="成功报名活动"){
+    if(x==true){
       wx.showToast({
-        title: x.message,
+        title: "活动报名成功！",
         icon:"success"
       })
       this.setData({status:4})

@@ -27,14 +27,14 @@ const get = async (url, data) => {
       method:"GET",
       data: data,
       success: (x) => {
-        resolve(x.data)
+        resolve(x.data.data)
       },
       fail: (x) => {
         wx.showToast({
           title: '网络错误',
           icon:"none"
         })
-        resolve(x.data)
+        resolve(x.data.data)
       }
     })
   })
@@ -50,14 +50,14 @@ const post = async (url, data) => {
       },
       data: data,
       success: (x) => {
-        resolve(x.data)
+        resolve(x.data.data)
       },
       fail: (x) => {
         wx.showToast({
           title: '网络错误',
           icon:"none"
         })
-        reject(x.data)
+        reject(x.data.data)
       }
     })
   })

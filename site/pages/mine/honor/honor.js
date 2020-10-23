@@ -1,7 +1,7 @@
 // pages/mine/honor/honor.js
 const app = getApp();
 const get = require("../../../utils/util").get;
-const { API_GET_HONORS } = require("../../../utils/urls");
+const { API_HONOR } = require("../../../utils/urls");
 Page({
 
   /**
@@ -12,8 +12,7 @@ Page({
     honors:[]
   },
   onLoad:async function(){
-    let data = await get(API_GET_HONORS,{uid:app.globalData.uData.uid});
-    data = data.data;
+    let data = await get(API_HONOR,{uid:app.globalData.uData.uid});
     data.forEach((x)=>{
       x.description = x.description.replace(/\\n/g,'\n')
     })

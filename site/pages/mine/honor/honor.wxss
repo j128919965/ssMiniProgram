@@ -97,7 +97,7 @@
 .m-honor-modal-des{
   width: 100%;
   font-size: 20rpx;
-  margin-top: 30rpx;
+  margin-top: 20rpx;
   text-align: left;
   letter-spacing: 1px;
   

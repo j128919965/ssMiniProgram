@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="xyz.lizhaorong.dao.ActivityChooseMapper">
+  <resultMap id="BaseResultMap" type="xyz.lizhaorong.entity.ActivityChoose">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="uid" jdbcType="INTEGER" property="uid" />
+    <result column="aid" jdbcType="INTEGER" property="aid" />
+    <result column="time" jdbcType="TIMESTAMP" property="time" />
+    <result column="handled" jdbcType="TINYINT" property="handled" />
+  </resultMap>
+</mapper>
