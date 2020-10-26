@@ -17,6 +17,5 @@ public class CardInfo implements Serializable {
     private String name;
     private Integer prop;
     private Integer point;
-    private String url;
 
 }

@@ -5,6 +5,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import xyz.lizhaorong.entity.st.Card;
+import xyz.lizhaorong.entity.st.CardInfo;
 import xyz.lizhaorong.entity.st.Group;
 import xyz.lizhaorong.entity.st.GroupSelect;
 import xyz.lizhaorong.service.StService;
@@ -52,8 +53,9 @@ public class StController {
     @ResponseBody
     public Response<Boolean> saveList(Integer gid,Integer[] list){
         log.debug("gid : "+gid);
-        stService.saveList(gid,list);
-        return Response.staticSuccess();
+        Response<Boolean> response = new Response<>();
+        response.success(stService.saveList(gid,list));
+        return response;
     }
 
     @GetMapping("/group")
@@ -69,6 +71,14 @@ public class StController {
     public Response<List<Card>> getGroupCards(Integer gid){
         Response<List<Card>> response = new Response<>();
         response.success(stService.getGroupCards(gid));
+        return response;
+    }
+
+    @GetMapping("/cardInfo")
+    @ResponseBody
+    public Response<List<CardInfo>> getCardInfos(){
+        Response<List<CardInfo>> response = new Response<List<CardInfo>>();
+        response.success(stService.getCardInfo());
         return response;
     }
 

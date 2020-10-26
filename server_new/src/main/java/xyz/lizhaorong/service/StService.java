@@ -31,6 +31,8 @@ public class StService {
 
     private final Map<Integer,CardInfo>  cardInfoMap = new HashMap<>();
 
+    private List<CardInfo> infos;
+
     private final Map<Integer,List<Integer>> groupResult = new HashMap<>();
 
     // 0 还未开始
@@ -46,7 +48,8 @@ public class StService {
         cards.clear();
         groupResult.clear();
         cardMapper.getAllCards().forEach(e->cards.put(e.getId(),e));
-        cardInfoMapper.selectAll().forEach(e->cardInfoMap.put(e.getType(),e));
+        infos = cardInfoMapper.selectAll();
+        infos.forEach(e->cardInfoMap.put(e.getType(),e));
         st_state = 1;
     }
 
@@ -254,5 +257,9 @@ public class StService {
 
     public void stopSt() {
         st_state = 2;
+    }
+
+    public List<CardInfo> getCardInfo() {
+        return infos;
     }
 }

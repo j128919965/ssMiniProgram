@@ -1,4 +1,3 @@
-const LOCAL_SERVER = 'http://localhost';
 const SERVER_HOST = 'https://ssacgn.online/api';
 //const SERVER_HOST = 'http://localhost:8080/api';
 
@@ -18,6 +17,7 @@ module.exports={
   API_ST_SCAN_CARD:SERVER_HOST + '/st/scan',
   API_ST_SAVE_LIST:SERVER_HOST + '/st/save',
   API_ST_GET_CARDS:SERVER_HOST + '/st/cards',
+  API_ST_GET_CARD_INFO:SERVER_HOST + '/st/cardInfo',
   API_ST_STATUS:SERVER_HOST + '/st/state',
   API_ST_POINTS:SERVER_HOST + '/st/points'
 }

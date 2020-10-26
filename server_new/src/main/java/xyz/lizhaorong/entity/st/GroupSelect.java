@@ -8,7 +8,7 @@ import java.io.Serializable;
 
 @Table(name = "st_select")
 @Data
-public class GroupSelect implements Serializable {
+public class GroupSelect implements Serializable     {
 
     @Id
     private Integer uid;

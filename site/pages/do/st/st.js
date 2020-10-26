@@ -4,6 +4,7 @@ const {
   API_ST_SCAN_CARD,
   API_ST_SAVE_LIST,
   API_ST_GET_CARDS,
+  API_ST_GET_CARD_INFO,
   API_ST_STATUS,
   API_ST_POINTS
 } = require('../../../utils/urls');
@@ -15,37 +16,13 @@ const {
 Page({
   data: {
     st_status:0,
+    visiable:false,
     points:[],
     touch: false,
     gid: -1,
     master: false,
     list: [],
-    cardInfo: [{
-        name: "泰沙拉克，阿格拉玛之击",
-        point: 200,
-        prop: 3
-      },
-      {
-        name: "大幻梦森罗万象狂暴气断罪眼",
-        point: 300,
-        prop: 2
-      },
-      {
-        name: "冰锥术",
-        point: 100,
-        prop: 1
-      },
-      {
-        name: "闪电链",
-        point: 300,
-        prop: 4
-      },
-      {
-        name: "奥数冲击",
-        point: 200,
-        prop: 5
-      }
-    ],
+    cardInfo: [],
     cardType: [
       {
         color: "#90D8DB",
@@ -79,6 +56,12 @@ Page({
       return;
     }
     let uData = app.globalData.uData;
+    let cardInfos = app.globalData.cardInfos;
+    if(!cardInfos){
+      cardInfos = await get(API_ST_GET_CARD_INFO);
+      app.globalData.cardInfos = cardInfos;
+    }
+    this.setData({cardInfo:cardInfos})
     if (!uData) {
       app.callbacks.push((data) => {
         this.setData({
@@ -180,6 +163,7 @@ Page({
   },
   async saveBtn(){
     let data = await this.save();
+    console.log(data)
     if(data){
       wx.showToast({
         title: '保存成功！',
@@ -187,7 +171,8 @@ Page({
       })
     }else{
       wx.showToast({
-        title: '该环节已结束！'
+        title: '该环节已结束！',
+        icon:"none"
       })
     }
   },
@@ -201,12 +186,10 @@ Page({
   init(){
     if(this.data.gid<0 || this.data.list.length<1)return;
     this.getwxmlcode("#movelist0", (firstitem) => {
-      var jiange = firstitem.top ;
-      var yiban = 50 + jiange/2;
+      var yiban = 55 +  firstitem.top/2;
       this.setData({
-        itemheight: 50 ,
         jiange: yiban, //两条中间到另一条的距离
-        jianqu: - 25, //位置要减去距离
+        jianqu: - 27.5, //位置要减去距离
       })
     })
   },
@@ -221,8 +204,8 @@ Page({
   listitemmove(e) {
     if(!this.data.touch)return;
 		if (e.type == "touchmove") {
-      var movetop = e.touches[0].pageY - this.data.itemheight;
-			var moveoutindex = parseInt((movetop - this.data.jianqu) / this.data.jiange);
+      var movetop = e.touches[0].pageY - 55;
+      var moveoutindex = parseInt((movetop - this.data.jianqu) / this.data.jiange);
 			if (e.currentTarget.dataset.index <= moveoutindex) moveoutindex++;
       this.moveoutindex = moveoutindex;
 			this.setData({
@@ -250,5 +233,11 @@ Page({
   press(){
     wx.vibrateShort()
     this.setData({touch:true})
+  },
+  showModal:function(e){
+    this.setData({visiable:true})
+  },
+  hideModal:function(){
+    this.setData({visiable:false})
   }
 })

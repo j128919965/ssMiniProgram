@@ -1,8 +1,12 @@
+@import '/app.wxss';
+
 .changemovenow {
 	width: 100%;
 	height: 60px !important;
 }
-
+.notmoving{
+  height:0;
+}
 .dileiitemlist {
   justify-content: center;
   padding-top: 30rpx;
@@ -40,4 +44,53 @@
 
 .s-l-i-p {
   margin-right: 20rpx;
+}
+
+.st-tipword{
+  width: 100%;
+  font-size: 36rpx;
+  padding: 40rpx 0;
+  text-align: center;
+}
+
+.blur{
+  filter: blur(2px);
+}
+
+.m-st-modal{
+  position: relative;
+	display: inline-block;
+  width: 700rpx;
+  background-color: white;
+  color: black;
+}
+
+.m-st-modal-inner{
+  padding: 40rpx;
+  display: flex;
+}
+
+.st-htp-btn{
+  position: absolute;
+  right: 0;
+  padding: 20rpx;
+  width: 200rpx !important;
+  color: white;
+}
+
+.st-bt1{
+  background-color: #B90000;
+  border: 1px solid #707070;
+  bottom: 340px;
+}
+.st-bt2{
+  background-color: #1b11ac;
+  border: 1px solid #707070;
+  bottom: 270px;
+}
+
+.st-bt3{
+  background-color: #11ac6c;
+  border: 1px solid #707070;
+  bottom: 200px;
 }
