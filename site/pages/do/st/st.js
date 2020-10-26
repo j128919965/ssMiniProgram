@@ -21,12 +21,12 @@ Page({
     master: false,
     list: [],
     cardInfo: [{
-        name: "海潮涌动",
+        name: "泰沙拉克，阿格拉玛之击",
         point: 200,
         prop: 3
       },
       {
-        name: "烈焰焚尽",
+        name: "大幻梦森罗万象狂暴气断罪眼",
         point: 300,
         prop: 2
       },
@@ -200,27 +200,15 @@ Page({
   },
   init(){
     if(this.data.gid<0 || this.data.list.length<1)return;
-    this.getwxmlcode("#movebox", (container) => {
-			this.setData({
-				movebox: container
-			})
-			setTimeout(() => {
-				this.getwxmlcode("#movelist0", (firstitem) => {
-					this.setData({
-						movelist0: firstitem
-          })
-					var jiange = firstitem.top - container.top;
-          var yiban = 50 + jiange/2;
-          console.log(firstitem.bottom - firstitem.top)
-          console.log("movebox top : " + container.top + ' list0 top : '+firstitem.top)
-					this.setData({
-						itemheight: 50 ,
-						jiange: yiban, //两条中间到另一条的距离
-						jianqu: container.top - 25, //位置要减去距离
-					})
-				})
-			}, 300)
-		})
+    this.getwxmlcode("#movelist0", (firstitem) => {
+      var jiange = firstitem.top ;
+      var yiban = 50 + jiange/2;
+      this.setData({
+        itemheight: 50 ,
+        jiange: yiban, //两条中间到另一条的距离
+        jianqu: - 25, //位置要减去距离
+      })
+    })
   },
   getwxmlcode(str, cal) {
 		const query1 = wx.createSelectorQuery()
@@ -260,7 +248,7 @@ Page({
 		}
   },
   press(){
-    console.log("press")
+    wx.vibrateShort()
     this.setData({touch:true})
   }
 })

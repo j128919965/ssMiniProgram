@@ -3,11 +3,6 @@
 	height: 60px !important;
 }
 
-#movebox{
-  padding-bottom: 200rpx;
-  z-index: -1;
-}
-
 .dileiitemlist {
   justify-content: center;
   padding-top: 30rpx;
@@ -34,14 +29,15 @@
 
 .s-l-i-t {
   text-align: start;
+  font-size: 35rpx;
   width: 470rpx;
 }
 
 .s-l-i-i {
   margin-left: 20rpx;
-  width: 80rpx;
+  width: 60rpx;
 }
 
 .s-l-i-p {
-  margin-right: 30rpx;
+  margin-right: 20rpx;
 }
