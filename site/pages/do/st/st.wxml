@@ -18,7 +18,7 @@
 </view>
 
 <block wx:if="{{st_status==1}}">
-	<scroll-view wx:if="{{gid>0}}" class="{{visiable?'blur':''}}">
+	<scroll-view wx:if="{{gid>0}}" class="m-st-list {{visiable?'blur':''}}">
 			<cu-custom bgColor="bg-gradual-red" isBack="{{true}}">
 				<view slot="backText">返回</view>
 				<view slot="content">ss2020素拓</view>
@@ -29,11 +29,11 @@
 				</view>
 			</block>
 			<view class="st-tipword" wx:if="{{list.length==0}}">您的队伍当前还没有卡片！</view>
-			<block wx:for="{{list}}" wx:key="index">
+			<block wx:if="{{master}}" wx:for="{{list}}" wx:key="index">
 				<view class="{{moveoutindex==index?'changemovenow':'notmoving'}}" style="transition: height 0.2s;"></view>
-				<view class="s-l-i"
-					style="background:{{cardType[item.type-1].color}};{{nowmoveindex==index?('position:absolute;top:'+movetop+'px;height:55px;z-index:9;'):''}}"
-					id="movelist{{index}}" bindlongpress="press" catchtouchmove="listitemmove" catchtouchend="listitemmove"
+					<view class="s-l-i"
+					style="background:{{cardType[cardInfo[item.type-1].prop-1].color}};{{nowmoveindex==index?('position:absolute;top:'+movetop+'px;height:90rpx;z-index:9;'):''}}"
+					id="movelist{{index}}" bindlongpress="press"  catchtouchmove="listitemmove" catchtouchend="listitemmove"
 					data-index="{{index}}">
 					<view class="s-l-i-i"><text class="iconfont {{cardType[cardInfo[item.type-1].prop-1].icon}}"
 							style="font-size:46rpx"></text></view>
@@ -41,28 +41,34 @@
 					<view class="s-l-i-p">{{cardInfo[item.type-1].point}}</view>
 				</view>
 			</block>
-	</scroll-view>
+			<block wx:if="{{!master}}" wx:for="{{list}}" wx:key="index">
+				<view class="{{moveoutindex==index?'changemovenow':'notmoving'}}" style="transition: height 0.2s;"></view>
+					<view class="s-l-i"
+					style="background:{{cardType[cardInfo[item.type-1].prop-1].color}};{{nowmoveindex==index?('position:absolute;top:'+movetop+'px;height:90rpx;z-index:9;'):''}}"
+					id="movelist{{index}}"
+					data-index="{{index}}">
+					<view class="s-l-i-i"><text class="iconfont {{cardType[cardInfo[item.type-1].prop-1].icon}}"
+							style="font-size:46rpx"></text></view>
+					<view class="s-l-i-t">{{cardInfo[item.type-1].name}}</view>
+					<view class="s-l-i-p">{{cardInfo[item.type-1].point}}</view>
+				</view>
+			</block>
+	</scroll-view >
 <view class="st-tipword" wx:if="{{gid==-1}}">
 	您暂无队伍哦
 </view>
 </block>
 
 
-<button bindtap="showModal" class="st-htp-btn st-bt1">
-	游戏规则
-</button>
-<button wx:if="{{master}}"  catchtap="scan" class="st-htp-btn st-bt2">
-	扫描新卡
-</button>
-<button  catchtap="saveBtn" wx:if="{{master}}" class="st-htp-btn st-bt3">
-	保存顺序
-</button>
+<view bindtap="showModal" class="st-htp-btn st-bt1 iconfont iconguize">
+</view>
+<view wx:if="{{master}}"  catchtap="scan" class="st-htp-btn st-bt2 iconfont iconsaomiao">
+</view>
+<view  catchtap="saveBtn" wx:if="{{master}}" class="st-htp-btn st-bt3 iconfont iconsave">
+</view>
 
 <view class="cu-modal {{visiable?'show':''}}" bindtap="hideModal" >
   <view class="m-st-modal">
-    <view class="m-st-modal-inner">
-			游戏规则  ： 
-			
-    </view>
+		<image mode="widthFix" style="width:100%;" src="/images/gzsm.png"/>
   </view>
 </view>

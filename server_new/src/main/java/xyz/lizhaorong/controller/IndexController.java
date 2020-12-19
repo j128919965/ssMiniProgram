@@ -1,5 +1,6 @@
 package xyz.lizhaorong.controller;
 
+import cn.hutool.crypto.SecureUtil;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -39,6 +40,35 @@ public class IndexController {
         log.debug("create and return user");
         return response.success(u);
     }
+
+    @PostMapping("/login")
+    @ResponseBody
+    public Response<User> login(String username,String password){
+        User user = userService.getUserByUsernameAndPassword(username, SecureUtil.md5(password));
+        if (user==null){
+            return new Response<User>().failure("用户名或密码错误！");
+        }
+        return new Response<User>().success(user);
+    }
+
+    @PostMapping("/refresh")
+    @ResponseBody
+    public Response<User> refresh(Integer uid){
+        User user = userService.getUserByUid(uid);
+        return new Response<User>().success(user);
+    }
+
+    @PostMapping("/register")
+    @ResponseBody
+    public Response<User> register(String username,String password){
+        User user = userService.register(username,SecureUtil.md5(password));
+        if (user==null){
+            return new Response<User>().failure("用户名已存在！");
+        }
+        return new Response<User>().success(user);
+
+    }
+
 
     @PostMapping("/user")
     @ResponseBody

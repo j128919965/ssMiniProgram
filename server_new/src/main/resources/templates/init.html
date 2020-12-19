@@ -14,18 +14,29 @@
     <br><br>
 
     <button id="getpoint">获取所有小队分数！</button>
-    <br><br>
-    <button id="stopBtn">停止素拓！</button>
-    <br><br>
-    分数板：
+    <br>
     <div id="points">
 
     </div>
+    <br><br>
+
+    <button id="getCards">获取所有小队卡牌！！</button>
+    <br>
+    <div id="cards">
+
+    </div>
+    <br><br>
+
+    <button id="stopBtn">停止素拓！</button>
+    <br><br>
+    分数板：
+
 </main>
 
 </body>
 <script>
     const gt = name=>document.getElementById(name);
+    let cardInfo = [];
     const clear = ()=>{
         let i = confirm("您确定要清空么？");
         if(!i)return;
@@ -42,6 +53,10 @@
             if(res.success){
                 alert("初始化成功！")
             }
+        }).then(()=>{
+            axios.get('/api/st/cardInfo').then(e=>{
+                cardInfo = e.data;
+            })
         })
     }
     const getPoint = ()=>{
@@ -50,6 +65,21 @@
             let str = '';
             data.forEach(e=>str+=`组别：  ${e.id}  ， 分数 ： ${e.point} <br/>`)
             gt('points').innerHTML = str;
+        })
+    }
+    let mdata;
+    const  getCards = ()=>{
+        axios.get('/api/st/groupCards').then(res=>{
+            mdata = res.data;
+            let cards = gt('cards');
+            cards.innerHTML='';
+            mdata.forEach((e,index)=>{
+                let str = `<br/> group ${index+1} : <br/> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`;
+                e.forEach(i=>{
+                    str+=`${cardInfo[i.type-1].name} -> `
+                })
+                cards.innerHTML+=str;
+            })
         })
     }
     const stopSt = ()=>{
@@ -61,5 +91,6 @@
     gt('getpoint').onclick = getPoint;
     gt('stopBtn').onclick = stopSt;
     gt('clear').onclick = clear;
+    gt('getCards').onclick = getCards ;
 </script>
 </html>

@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.bootcdn.net/ajax/libs/axios/0.1.0/axios.min.js"></script>
+    <style>
+        body{
+            display: flex;
+            flex-wrap: wrap;
+        }
+        .m-ctn{
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 20px;
+            width: 200px;
+        }
+        .m-img{
+            width: 100px;
+            height: 100px;
+        }
+    </style>
+</head>
+<body>
+    <input type="number" id="no"><button id="getCard">获取！</button><button id="sm">扫描完成</button>
+    <div id="sb">
+
+    </div>
+
+</body>
+<script>
+    const body = document.getElementById("sb");
+    const get = (url)=>{
+        return new Promise(resolve => {
+            axios.get("https://ssacgn.online/api/st/"+url).then(e=>resolve(e.data));
+        })
+    }
+    let cards = [];
+    let cardInfo = [];
+    let flags = [0,0,0,0,0,0,0,0,0,0]
+
+    const init = async ()=>{
+        cardInfo = await get("cardInfo");
+        cards = await get("allCards");
+    }
+
+    const generate = ()=>{
+        let v = document.getElementById("no").value;
+        v = parseInt(v);
+        let val = (v-1)*2;
+        if(flags[v]>0){
+            val++;
+        }
+        let e = cards[parseInt(val)+81];
+        console.log(e)
+        body.innerHTML = ` <div class="m-ctn">
+            <img class="m-img" src='https://api.pwmqr.com/qrcode/create/?url={"id":${e.id},"type":${e.type}}' alt="">
+            <div>${cardInfo[e.type - 1].name}</div>
+            </div>`;
+    }
+
+    const sm = ()=>{
+        let v = document.getElementById("no").value;
+        v = parseInt(v);
+        flags[v] = 1;
+    }
+
+    document.getElementById("getCard").onclick = generate;
+    document.getElementById("sm").onclick = sm;
+    init();
+
+</script>
+</html>

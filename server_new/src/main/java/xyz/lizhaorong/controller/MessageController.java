@@ -16,7 +16,7 @@ public class MessageController {
     MessageService messageService;
 
     @GetMapping
-    public Response<List<Message>> getMessages(Integer uid){
+    public Response<List<Message>> getMessages(Integer uid) {
         Response<List<Message>> response = new Response<>();
         response.success(messageService.getAllMessageByUid(uid));
         return response;
@@ -28,8 +28,9 @@ public class MessageController {
         response.success(messageService.getNotReadCount(uid));
         return response;
     }
+
     @PostMapping("/readMsg/{id}")
-    public Response<Boolean> readMsg(@PathVariable("id") Integer id){
+    public Response<Boolean> readMsg(@PathVariable("id") Integer id) {
         messageService.readMsg(id);
         return Response.staticSuccess();
     }

@@ -33,6 +33,8 @@ public class StService {
 
     private List<CardInfo> infos;
 
+    private List<Card> allCardList;
+
     private final Map<Integer,List<Integer>> groupResult = new HashMap<>();
 
     // 0 还未开始
@@ -47,9 +49,12 @@ public class StService {
     public void init(){
         cards.clear();
         groupResult.clear();
-        cardMapper.getAllCards().forEach(e->cards.put(e.getId(),e));
+        allCardList = cardMapper.getAllCards();
+        allCardList.forEach(e->cards.put(e.getId(),e));
+
         infos = cardInfoMapper.selectAll();
         infos.forEach(e->cardInfoMap.put(e.getType(),e));
+
         st_state = 1;
     }
 
@@ -80,6 +85,14 @@ public class StService {
         List<Integer> list = groupResult.get(gid);
         if(list==null)return new ArrayList<>();
         return list.stream().map(cards::get).collect(Collectors.toList());
+    }
+
+    public List<List<Card>> getGroupCards(){
+        List<List<Card>> lists = new ArrayList<>();
+        for(int i=1;i<=6;i++){
+            lists.add(getGroupCards(i));
+        }
+        return lists;
     }
 
     /**
@@ -134,13 +147,13 @@ public class StService {
                             }
                             case 3:{
                                 log.debug("冰+水");
-                                nextBigger = 50;
+                                nextBigger = 80;
                                 nextState=1;
                                 break;
                             }
                             case 4:{
                                 log.debug("冰+雷");
-                                nextBigger = 1.3;
+                                nextBigger = 1.4;
                                 break;
                             }
                             default:{
@@ -164,7 +177,7 @@ public class StService {
                             case 4 :{
                                 log.debug("火+雷");
                                 nextState = 2;
-                                point+=50;
+                                point+=60;
                             }
                         }
                         break;
@@ -174,7 +187,7 @@ public class StService {
                             case 1:{
                                 log.debug("水+冰");
                                 nextState=1;
-                                nextBigger=50;
+                                nextBigger=80;
                                 break;
                             }
                             case 2:{
@@ -185,7 +198,7 @@ public class StService {
                             case 4:{
                                 log.debug("水+雷");
                                 nextState=4;
-                                point+=50;
+                                point+=60;
                                 break;
                             }
                             default:{
@@ -198,19 +211,19 @@ public class StService {
                         switch (nowState){
                             case 1:{
                                 log.debug("雷+冰");
-                                nextBigger=1.3;
+                                nextBigger=1.4;
                                 break;
                             }
                             case 2:{
                                 log.debug("雷+火");
                                 nextState=2;
-                                point+=50;
+                                point+=60;
                                 break;
                             }
                             case 3:{
                                 log.debug("雷+水");
                                 nextState=4;
-                                point+=50;
+                                point+=60;
                                 break;
                             }
                             default:{
@@ -221,7 +234,7 @@ public class StService {
                     }
                     case 5:{
                         log.debug("奥数");
-                        point *= 1.6;
+                        point *= 1.3;
                         break;
                     }
                 }
@@ -261,5 +274,9 @@ public class StService {
 
     public List<CardInfo> getCardInfo() {
         return infos;
+    }
+
+    public List<Card> getAllCards() {
+        return allCardList;
     }
 }

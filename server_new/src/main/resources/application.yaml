@@ -17,7 +17,6 @@ spring:
     username: root
     password: o@S$9i3r6V
     driver-class-name: com.mysql.cj.jdbc.Driver
-
 mybatis:
   config-location: classpath:/mybatis-config.xml
   mapper-locations: classpath:/mappers/*.xml
@@ -25,7 +24,7 @@ mybatis:
 logging:
   level:
     xyz:
-      lizhaorong: warn
+      lizhaorong: trace
 
 server:
   servlet:

@@ -1,4 +1,7 @@
 @import '/app.wxss';
+.m-st-list{
+  margin-bottom: 200rpx;
+}
 
 .changemovenow {
 	width: 100%;
@@ -19,10 +22,10 @@
 }
 
 .s-l-i {
-  margin: 30rpx 75rpx 0 75rpx;
+  margin: 10rpx 90rpx 0 60rpx;
   align-items: center;
   display: flex;
-  height: 100rpx;
+  height: 90rpx;
   width: 600rpx;
   border: 2px solid white;
   position: relative;
@@ -61,36 +64,25 @@
   position: relative;
 	display: inline-block;
   width: 700rpx;
-  background-color: white;
   color: black;
-}
-
-.m-st-modal-inner{
-  padding: 40rpx;
-  display: flex;
+  margin-top: 100px;
 }
 
 .st-htp-btn{
-  position: absolute;
+  position: fixed;
   right: 0;
-  padding: 20rpx;
-  width: 200rpx !important;
-  color: white;
+  z-index: 8;
+  font-size: 25px;
+  padding: 0 25rpx;
 }
 
 .st-bt1{
-  background-color: #B90000;
-  border: 1px solid #707070;
-  bottom: 340px;
+  top: 100px;
 }
 .st-bt2{
-  background-color: #1b11ac;
-  border: 1px solid #707070;
-  bottom: 270px;
+  top: 150px;
 }
 
 .st-bt3{
-  background-color: #11ac6c;
-  border: 1px solid #707070;
-  bottom: 200px;
+  top: 200px;
 }

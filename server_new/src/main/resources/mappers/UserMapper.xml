@@ -19,7 +19,29 @@
     <result column="phone" jdbcType="VARCHAR" property="phone" />
   </resultMap>
 
+  <resultMap id="resMap2" type="xyz.lizhaorong.entity.User">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <id column="uid" jdbcType="INTEGER" property="uid" />
+    <result column="cn" jdbcType="VARCHAR" property="cn" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="department" jdbcType="INTEGER" property="department" />
+    <result column="gender" jdbcType="BIT" property="gender" />
+    <result column="birthday" jdbcType="VARCHAR" property="birthday" />
+    <result column="class_name" jdbcType="VARCHAR" property="className" />
+    <result column="stu_id" jdbcType="VARCHAR" property="stuId" />
+    <result column="wxid" jdbcType="VARCHAR" property="wxid" />
+    <result column="role" jdbcType="BIT" property="role" />
+    <result column="level" jdbcType="VARCHAR" property="level" />
+    <result column="phone" jdbcType="VARCHAR" property="phone" />
+  </resultMap>
+
   <update id="updateUser">
     update user set ${opt} = #{data} where uid=#{uid}
   </update>
+
+  <select id="getUserByUsernameAndPassword" resultMap="resMap2">
+    select uid,cn,name,department,gender,birthday,class_name,stu_id,wxid,`role`,`level`,phone from user where username=#{user} and password=#{pswd}
+  </select>
 </mapper>

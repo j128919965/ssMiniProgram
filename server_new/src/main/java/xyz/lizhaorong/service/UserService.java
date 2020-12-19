@@ -72,4 +72,26 @@ public class UserService {
         userMapper.updateUser(opt,uid,data);
         log.debug("update success");
     }
+
+    public User getUserByUsernameAndPassword(String userName, String password) {
+        User user = userMapper.getUserByUsernameAndPassword(userName, password);
+        log.debug(user.toString());
+        return user;
+    }
+
+    public User register(String username, String password) {
+        Integer uid = userMapper.getUidByUsername(username);
+        if (uid!=null){
+            return null;
+        }
+        User user = new User();
+        user.setWxid(username);
+        userMapper.insertSelective(user);
+        userMapper.updateUsernameAndPassword(user.getUid(),username,password);
+        return user;
+    }
+
+    public User getUserByUid(Integer uid) {
+        return userMapper.selectByPrimaryKey(uid);
+    }
 }

@@ -15,16 +15,15 @@ const {
 
 Page({
   data: {
-    st_status:0,
-    visiable:false,
-    points:[],
+    st_status: 0,
+    visiable: false,
+    points: [],
     touch: false,
     gid: -1,
     master: false,
     list: [],
     cardInfo: [],
-    cardType: [
-      {
+    cardType: [{
         color: "#90D8DB",
         icon: "iconicon16"
       }, //冰
@@ -48,38 +47,44 @@ Page({
   },
   onLoad: async function (options) {
     let st_status = await get(API_ST_STATUS);
-    if(st_status==0)return;
-    this.setData({st_status:st_status})
-    if(st_status==2){
+    if (st_status == 0) return;
+    this.setData({
+      st_status: st_status
+    })
+    if (st_status == 2) {
       let points = await get(API_ST_POINTS);
-      this.setData({points:points})
+      this.setData({
+        points: points
+      })
       return;
     }
     let uData = app.globalData.uData;
     let cardInfos = app.globalData.cardInfos;
-    if(!cardInfos){
+    if (!cardInfos) {
       cardInfos = await get(API_ST_GET_CARD_INFO);
       app.globalData.cardInfos = cardInfos;
     }
-    this.setData({cardInfo:cardInfos})
+    this.setData({
+      cardInfo: cardInfos
+    })
     if (!uData) {
       app.callbacks.push((data) => {
         this.setData({
           uData: data
+        },()=>{
+          this.getInfos();
         })
-        this.getInfos();
+        
       })
     } else {
       this.setData({
         uData: uData
+      },()=>{
+        this.getInfos();
       })
-      this.getInfos();
+      
     }
   },
-  // onPullDownRefresh:function(){
-  //   if(this.data.gid==-1)return;
-  //   this.getCards();
-  // },
   async getInfos() {
     let uid = this.data.uData.uid;
     let groupSelect = await get(API_ST_GROUP, {
@@ -103,7 +108,7 @@ Page({
     });
   },
   scan() {
-    if(!this.data.master)return;
+    if (!this.data.master) return;
     let that = this;
     let data = wx.scanCode({
       onlyFromCamera: false,
@@ -161,83 +166,92 @@ Page({
       }
     })
   },
-  async saveBtn(){
+  async saveBtn() {
     let data = await this.save();
     console.log(data)
-    if(data){
+    if (data) {
       wx.showToast({
         title: '保存成功！',
-        icon:"success"
+        icon: "success"
       })
-    }else{
+    } else {
       wx.showToast({
         title: '该环节已结束！',
-        icon:"none"
+        icon: "none"
       })
     }
   },
   async save() {
-    if(!this.data.master)return;
+    if (!this.data.master) return;
     return await post(API_ST_SAVE_LIST, {
       list: this.data.list.map(e => e.id),
       gid: this.data.gid
     })
   },
-  init(){
-    if(this.data.gid<0 || this.data.list.length<1)return;
+  init() {
+    if (this.data.gid < 0 || this.data.list.length < 1) return;
     this.getwxmlcode("#movelist0", (firstitem) => {
-      var yiban = 55 +  firstitem.top/2;
+      let itemHeight = firstitem.bottom - firstitem.top;
+      var jiange = itemHeight + 10;
+      console.log(jiange)
       this.setData({
-        jiange: yiban, //两条中间到另一条的距离
-        jianqu: - 27.5, //位置要减去距离
+        jiange: jiange, //两条中间到另一条的距离
+        jianqu: -(itemHeight / 2), //位置要减去距离
+        itemHeight: itemHeight
       })
     })
   },
   getwxmlcode(str, cal) {
-		const query1 = wx.createSelectorQuery()
-		query1.select(str).boundingClientRect()
-		query1.selectViewport().scrollOffset()
-		query1.exec((res) => {
-			if (cal) cal(res[0])
-		})
-	},
+    const query1 = wx.createSelectorQuery()
+    query1.select(str).boundingClientRect()
+    query1.selectViewport().scrollOffset()
+    query1.exec((res) => {
+      if (cal) cal(res[0])
+    })
+  },
   listitemmove(e) {
-    if(!this.data.touch)return;
-		if (e.type == "touchmove") {
-      var movetop = e.touches[0].pageY - 55;
-      var moveoutindex = parseInt((movetop - this.data.jianqu) / this.data.jiange);
-			if (e.currentTarget.dataset.index <= moveoutindex) moveoutindex++;
+    if (!this.data.touch) return;
+    if (e.type == "touchmove") {
+      var movetop = e.touches[0].pageY - this.data.itemHeight;
+      var moveoutindex = parseInt((movetop - this.data.itemHeight) / this.data.jiange);
+      if (e.currentTarget.dataset.index <= moveoutindex) moveoutindex++;
       this.moveoutindex = moveoutindex;
-			this.setData({
-				nowmoveindex: e.currentTarget.dataset.index,
-				movetop,
-				moveoutindex
-			})
-		} else {
-			let index = e.currentTarget.dataset.index,
-				score = this.data.list;
-			let data = {
-				...score[index]
-			};
-			score.splice(index, 1);
-			if (index <= this.moveoutindex - 1) this.moveoutindex--;
-			score.splice(this.moveoutindex, 0, data);
-			this.setData({
-				list: score,
-				moveoutindex: -1,
+      this.setData({
+        nowmoveindex: e.currentTarget.dataset.index,
+        movetop,
+        moveoutindex
+      })
+    } else {
+      let index = e.currentTarget.dataset.index,
+        score = this.data.list;
+      let data = {
+        ...score[index]
+      };
+      score.splice(index, 1);
+      if (index <= this.moveoutindex - 1) this.moveoutindex--;
+      score.splice(this.moveoutindex, 0, data);
+      this.setData({
+        list: score,
+        moveoutindex: -1,
         nowmoveindex: -1,
-        touch:false
-			});
-		}
+        touch: false
+      });
+    }
   },
-  press(){
+  press(e) {
     wx.vibrateShort()
-    this.setData({touch:true})
+    this.setData({
+      touch: true
+    })
   },
-  showModal:function(e){
-    this.setData({visiable:true})
+  showModal: function (e) {
+    this.setData({
+      visiable: true
+    })
   },
-  hideModal:function(){
-    this.setData({visiable:false})
+  hideModal: function () {
+    this.setData({
+      visiable: false
+    })
   }
 })

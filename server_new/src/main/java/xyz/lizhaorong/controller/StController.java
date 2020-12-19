@@ -28,6 +28,11 @@ public class StController {
         return "init";
     }
 
+    @GetMapping("/waigua")
+    public String lzrPage(){
+        return "wg";
+    }
+
     @PostMapping("/clear")
     @ResponseBody
     public Response<Boolean> clearSt(){
@@ -74,6 +79,24 @@ public class StController {
         return response;
     }
 
+    @GetMapping("/allCards")
+    // rest
+    @ResponseBody
+    public Response<List<Card>> getAllCards(){
+        Response<List<Card>> response = new Response<>();
+        response.success(stService.getAllCards());
+        return response;
+    }
+
+    @GetMapping("/groupCards")
+    @ResponseBody
+    public Response<List<List<Card>>> getGroupCards(){
+        Response<List<List<Card>>> response = new Response<>();
+        response.success(stService.getGroupCards());
+        return response;
+    }
+
+
     @GetMapping("/cardInfo")
     @ResponseBody
     public Response<List<CardInfo>> getCardInfos(){
@@ -109,6 +132,5 @@ public class StController {
         stService.stopSt();
         return getPoints();
     }
-
 
 }

@@ -82,7 +82,7 @@ public class ExceptionAdvice {
         return new Response().failure("content_type_not_supported");
     }
 
-    /**
+    /** 
      * 500 - Internal Server Error
      */
     @ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)

@@ -1,5 +1,5 @@
-const SERVER_HOST = 'https://ssacgn.online/api';
-//const SERVER_HOST = 'http://localhost:8080/api';
+//const SERVER_HOST = 'https://ssacgn.online/api';
+const SERVER_HOST = 'http://localhost:8080/api';
 
 module.exports={
   API_LOGIN: SERVER_HOST + '/login',//1
